@@ -1,0 +1,39 @@
+@import 'styles/mixins/index';
+
+.app {
+  text-align: center;
+}
+
+.header {
+  background-color: var(--grisaille);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.logotype {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.link {
+  color: var(--grisaille);
+}
+
+.description {
+  @include defaultText;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
