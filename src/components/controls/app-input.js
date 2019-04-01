@@ -1,30 +1,52 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 const AppInput = (props) => {
   const {
+    children,
+    inputClass,
+    labelClass,
+    labelInnerClass,
+    name,
     onInputChange,
+    onInputBlur,
     placeholder,
-    className,
-    id
+    type
   } = props;
   
   return (
-    <input
-      id={ id }
-      className={ className }
-      type="text"
-      placeholder={ placeholder }
-      onChange={ onInputChange }
-    />
+    <label
+      className={ labelClass }
+      htmlFor={ `id-${ name }` }
+    >
+      <span className={ labelInnerClass }>{ children }</span>
+      <input
+        id={ `id-${ name }` }
+        className={ inputClass }
+        type={ type }
+        placeholder={ placeholder }
+        onChange={ onInputChange }
+        onBlur={ onInputBlur }
+      />
+    </label>
   );
 };
 
-AppInput.propTypes = {
-  onInputChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  id: PropTypes.string
+AppInput.defaultProps = {
+  inputClass: '',
+  labelClass: '',
+  labelInnerClass: '',
+  type: 'text'
 };
 
-export default AppInput;
+AppInput.propTypes = {
+  inputClass: PropTypes.string,
+  labelClass: PropTypes.string,
+  labelInnerClass: PropTypes.string,
+  name: PropTypes.string,
+  onInputChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  type: PropTypes.string
+};
+
+export default memo(AppInput);
