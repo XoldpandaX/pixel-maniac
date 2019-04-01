@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as topicActions from '../../store/topics/actions';
-import * as topicsSelectors from '../../store/topics/reducers';
+import * as topicActions from 'store/topics/actions';
+import * as topicsSelectors from 'store/topics/reducers';
 
-import ListView from '../../components/list-view';
+import ListView from 'components/list-view';
 
 import './topics-screen.css';
 

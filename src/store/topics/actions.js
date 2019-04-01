@@ -1,18 +1,16 @@
 import * as types from './action-types';
-import keyBy from 'lodash/keyBy';
-import RedditService from '../../services/reddit';
 import * as topicsSelectors from './reducers';
 
 function fetchTopics() {
   return async(dispatch) => {
     try{
-      const subredditArray = await RedditService.getDefaultSubreddits();
-      const topicsByUrl = keyBy(subredditArray, ({ url }) => url);
+      //const subredditArray = await RedditService.getDefaultSubreddits();
+      //const topicsByUrl = keyBy(subredditArray, ({ url }) => url);
       
-      dispatch({
-        type: types.TOPICS_FETCHED,
-        topicsByUrl
-      });
+      // dispatch({
+      //   type: types.TOPICS_FETCHED,
+      //   topicsByUrl
+      // });
     } catch (e) {
       console.error(`fetchTopics ${ e }`)
     }
