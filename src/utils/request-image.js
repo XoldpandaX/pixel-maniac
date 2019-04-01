@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { notification } from '../utils';
+import { notification } from 'utils';
 
-import { IMAGE_SERVER_ENDPOINT, IMAGE_SERVER_KEY } from '../config';
+import { IMAGE_SERVER_ENDPOINT, IMAGE_SERVER_KEY } from 'config';
 
 const requestImage = axios.create({
   baseURL: IMAGE_SERVER_ENDPOINT,

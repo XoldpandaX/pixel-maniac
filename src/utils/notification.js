@@ -1,5 +1,5 @@
 import iziToast from 'izitoast';
-import { NOTIFICATION_TIMEOUT } from '../config';
+import { NOTIFICATION_TIMEOUT } from 'config';
 
 /**
  * Wrapper for izitoast notification system, which provide
