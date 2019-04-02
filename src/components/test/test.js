@@ -7,7 +7,8 @@ import AnotherTest from 'components/another-test/another-test.js';
 
 class Test extends Component {
   state = {
-    inputField: ''
+    inputField: '',
+    hasError: false
   };
   
   appInputChildren = <AnotherTest/>; // stop rerender
@@ -20,15 +21,27 @@ class Test extends Component {
     console.info(e);
   };
   
+  showError = () => {
+    this.setState({ hasError: true });
+  };
+  
+  hideError = () => {
+    this.setState({ hasError: false });
+  };
+  
   
   render() {
     return (
       <div>
+        <button onClick={ this.showError }>show error</button>
+        <button onClick={ this.hideError }>hide error</button>
         <p>{ this.state.inputField }</p>
         <AppInput
-          onInputChange={ this.onInputChange }
-          onInputBlur={ this.onInputBlur }
+          handleChange={ this.onInputChange }
+          handleBlur={ this.onInputBlur }
           placeholder='User Name'
+          hasError={ this.state.hasError }
+          errorText='Error mfcka'
         >
           { this.appInputChildren }
         </AppInput>

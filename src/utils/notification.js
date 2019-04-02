@@ -24,18 +24,17 @@ function notification({ title, type='', message, timeout = NOTIFICATION_TIMEOUT,
     const notificationTypes = ['error', 'info', 'success', 'warning'];
     const idx = notificationTypes.indexOf(type);
   
-    if (idx >= 0) {
-      return (
-        iziToast[notificationTypes[idx]]({
+    return (
+      idx >= 0
+        ? iziToast[notificationTypes[idx]]({
           title,
+          color: type === 'error' ? '#cc302e' : null,
           message,
           timeout,
           position
         })
-      );
-    }
-    
-    return () => console.error('notificationError: this type of notification does not exist');
+        : console.error('notificationError: this type of notification does not exist')
+    );
   } catch (e) {
   
   }

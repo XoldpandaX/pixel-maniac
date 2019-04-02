@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import Test from 'components/test';
 
 import './app.css';
-
+import {notification} from "../../utils";
+notification({ title: 'sdfsdf', message: 'sdfsdf', type: 'error', timeout: 1000000});
 class App extends Component {
   
   render () {

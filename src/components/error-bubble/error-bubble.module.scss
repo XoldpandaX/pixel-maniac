@@ -1,0 +1,89 @@
+@import 'styles/functions/index.scss';
+
+.errorBubble {
+  position: relative;
+  max-width: 285px;
+  width: 100%;
+  background-color: #cc302e;
+  composes: common-box-shadow from 'styles/common-classes/common.scss';
+  border-radius: rem(3px);
+  padding: rem(12.5px) rem(20px) rem(12.5px) rem(12.5px);
+  margin-left: 100px;
+
+  span {
+    display: block;
+    word-wrap: break-word;
+    color: white;
+    font-weight: bold;
+    font-size: rem(11px);
+  }
+}
+
+.error-enter {
+  opacity: 0;
+}
+
+.error-enter-active {
+  display: block;
+  animation: slide-on .5s ease-in-out normal;
+  animation-fill-mode: forwards;
+}
+
+.error-exit {
+  opacity: 1;
+}
+
+.errorShows {
+  animation: slide-on .5s ease-in-out normal;
+  display: block;
+  animation-fill-mode: forwards;
+}
+
+.errorDisappears {
+  animation: slide-off .5s ease-out normal;
+  display: none;
+  animation-fill-mode: forwards;
+}
+
+.textShows {
+  animation: textSlide .8s ease-out normal;
+}
+
+@keyframes textSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  70% {
+    opacity: .7;
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+    animation-play-state: paused;
+  }
+}
+
+
+@keyframes slide-on {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-20px);
+    animation-play-state: paused;
+  }
+}
+
+@keyframes slide-off {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
