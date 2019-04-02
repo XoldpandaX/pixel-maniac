@@ -1,38 +1,62 @@
-import React, { memo } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransition } from 'react-transition-group';
 
-const AppInput = (props) => {
-  const {
-    children,
-    inputClass,
-    labelClass,
-    labelInnerClass,
-    name,
-    onInputChange,
-    onInputBlur,
-    placeholder,
-    type
-  } = props;
+import ErrorBubble from 'components/error-bubble';
+import './app-input.scss';
+
+class AppInput extends PureComponent {
+  state = { hasError: false };
   
-  return (
-    <label
-      className={ labelClass }
-      htmlFor={ `id-${ name }` }
-    >
-      <span className={ labelInnerClass }>{ children }</span>
-      <input
-        id={ `id-${ name }` }
-        className={ inputClass }
-        type={ type }
-        placeholder={ placeholder }
-        onChange={ onInputChange }
-        onBlur={ onInputBlur }
-      />
-    </label>
-  );
-};
+  componentDidUpdate({ hasError }, prevState, snapshot) {
+    this.props.hasError !== hasError
+    && this.setState({ hasError: this.props.hasError })
+  }
+  
+  render() {
+    const {
+      errorText,
+      children,
+      inputClass,
+      labelClass,
+      labelInnerClass,
+      name,
+      handleBlur,
+      handleChange,
+      placeholder,
+      type
+    } = this.props;
+    
+    return (
+      <label
+        className={ labelClass }
+        htmlFor={ `id-${ name }` }
+      >
+        <span className={ labelInnerClass }>{ children }</span>
+        <input
+          id={ `id-${ name }` }
+          className={ inputClass }
+          type={ type }
+          placeholder={ placeholder }
+          onChange={ handleChange }
+          onBlur={ handleBlur }
+        />
+        <CSSTransition
+          in={ this.state.hasError }
+          timeout={ 400 }
+          classNames='error'
+          unmountOnExit
+        >
+          <ErrorBubble errorText={ errorText } />
+        </CSSTransition>
+      </label>
+    );
+  }
+}
 
 AppInput.defaultProps = {
+  hasError: false,
+  errorText: '',
   inputClass: '',
   labelClass: '',
   labelInnerClass: '',
@@ -40,13 +64,16 @@ AppInput.defaultProps = {
 };
 
 AppInput.propTypes = {
+  hasError: PropTypes.bool,
+  errorText: PropTypes.string,
   inputClass: PropTypes.string,
   labelClass: PropTypes.string,
   labelInnerClass: PropTypes.string,
   name: PropTypes.string,
-  onInputChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func,
+  handleChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   type: PropTypes.string
 };
 
-export default memo(AppInput);
+export default AppInput;
