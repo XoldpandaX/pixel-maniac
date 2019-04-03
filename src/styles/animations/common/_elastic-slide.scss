@@ -1,0 +1,19 @@
+.a-elastic-slide {
+  animation: elastic-slide .8s ease-out normal;
+}
+
+@keyframes elastic-slide {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  70% {
+    opacity: .7;
+    transform: translateX(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+    animation-play-state: paused;
+  }
+}
