@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import AppInput from 'components/controls/app-input';
-import AnotherTest from 'components/another-test/another-test.js';
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-class Test extends Component {
+class HomePage extends Component {
   state = {
     inputField: '',
     hasError: false
   };
   
-  appInputChildren = <AnotherTest/>; // stop rerender
+  appInputChildren = (
+    <FontAwesomeIcon
+      icon='user'
+      size='md'
+      color='white'
+    />
+  ); // stop re-render
   
   onInputChange = (e) => {
     this.setState({ inputField: e.target.value });
@@ -50,4 +54,5 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default HomePage;
+
