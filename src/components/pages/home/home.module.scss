@@ -1,0 +1,14 @@
+@import 'styles/functions/index.scss';
+
+.homePage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.authorizationCol {
+  margin-right: 7.5%;
+}
+
+.widgetCol {
+  margin-left: 7.5%;
+}
