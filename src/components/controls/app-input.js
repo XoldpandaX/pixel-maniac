@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+
 import { CSSTransition } from 'react-transition-group';
 
 import ErrorBubble from 'components/error-bubble';
@@ -61,6 +62,7 @@ class AppInput extends PureComponent {
 AppInput.defaultProps = {
   hasError: false,
   errorText: '',
+  name: '', // TODO сделать required
   inputClass: '',
   labelClass: '',
   labelInnerClass: '',
