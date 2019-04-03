@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 
 import ErrorBubble from 'components/error-bubble';
-import './app-input.scss';
 
 class AppInput extends PureComponent {
   state = { hasError: false };
@@ -27,6 +26,11 @@ class AppInput extends PureComponent {
       type
     } = this.props;
     
+    const animationTimeouts = {
+      enter: 400,
+      exit: 250
+    };
+    
     return (
       <label
         className={ labelClass }
@@ -42,9 +46,9 @@ class AppInput extends PureComponent {
           onBlur={ handleBlur }
         />
         <CSSTransition
+          classNames='a-slide'
           in={ this.state.hasError }
-          timeout={ 400 }
-          classNames='error'
+          timeout={{ ...animationTimeouts }}
           unmountOnExit
         >
           <ErrorBubble errorText={ errorText } />
