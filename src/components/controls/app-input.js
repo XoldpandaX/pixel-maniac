@@ -17,7 +17,7 @@ class AppInput extends PureComponent {
     const {
       errorText,
       children,
-      inputClass,
+      classNames,
       labelClass,
       labelInnerClass,
       name,
@@ -40,7 +40,7 @@ class AppInput extends PureComponent {
         <span className={ labelInnerClass }>{ children }</span>
         <input
           id={ `id-${ name }` }
-          className={ inputClass }
+          className={ classNames }
           type={ type }
           placeholder={ placeholder }
           onChange={ handleChange }
@@ -62,8 +62,8 @@ class AppInput extends PureComponent {
 AppInput.defaultProps = {
   hasError: false,
   errorText: '',
-  name: '', // TODO сделать required
-  inputClass: '',
+  name: '',
+  classNames: '',
   labelClass: '',
   labelInnerClass: '',
   type: 'text'
@@ -72,10 +72,10 @@ AppInput.defaultProps = {
 AppInput.propTypes = {
   hasError: PropTypes.bool,
   errorText: PropTypes.string,
-  inputClass: PropTypes.string,
+  classNames: PropTypes.string,
   labelClass: PropTypes.string,
   labelInnerClass: PropTypes.string,
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   handleBlur: PropTypes.func,
   handleChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

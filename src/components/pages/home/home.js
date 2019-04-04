@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import AuthorizationFormContainer from 'components/template-containers/authorization-form';
-import AppInput from 'components/controls/app-input';
+import LoginForm from 'components/forms/login';
 
 import styles from './home.module.scss';
 
@@ -54,20 +54,21 @@ class HomePage extends Component {
             type='login'
             title='Login'
           >
-            <>
-              <button onClick={ this.showError }>show error</button>
-              <button onClick={ this.hideError }>hide error</button>
-              <p>{ this.state.inputField }</p>
-              <AppInput
-                handleChange={ this.onInputChange }
-                handleBlur={ this.onInputBlur }
-                placeholder='User Name'
-                hasError={ this.state.hasError }
-                errorText='Error mfcka'
-              >
-                { this.appInputChildren }
-              </AppInput>
-            </>
+            <LoginForm />
+            {/*<>*/}
+            {/*  <button onClick={ this.showError }>show error</button>*/}
+            {/*  <button onClick={ this.hideError }>hide error</button>*/}
+            {/*  <p>{ this.state.inputField }</p>*/}
+            {/*  <AppInput*/}
+            {/*    handleChange={ this.onInputChange }*/}
+            {/*    handleBlur={ this.onInputBlur }*/}
+            {/*    placeholder='User Name'*/}
+            {/*    hasError={ this.state.hasError }*/}
+            {/*    errorText='Error mfcka'*/}
+            {/*  >*/}
+            {/*    { this.appInputChildren }*/}
+            {/*  </AppInput>*/}
+            {/*</>*/}
           </AuthorizationFormContainer>
         </section>
       </div>
