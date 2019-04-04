@@ -38,8 +38,12 @@ const AuthorizationFormContainer = (props) => {
     <div className={ authorizationFormContainer }>
       <header className={ containerHeader }>
         { renderIcon(type) }
-        <AppTitle level='h3'>Login</AppTitle>
-        {/*<h3 className={ containerTitle }>{ title }</h3>*/}
+        <AppTitle
+          level='h3'
+          classNames={ containerTitle }
+        >
+          { title }
+        </AppTitle>
       </header>
       { children }
     </div>
