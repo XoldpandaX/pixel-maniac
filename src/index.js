@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import App from 'components/app';
+
+import 'typeface-ubuntu';
 import 'index.scss';
 
 import * as reducers from './store'
