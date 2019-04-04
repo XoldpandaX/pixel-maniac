@@ -62,7 +62,7 @@ class AppInput extends PureComponent {
 AppInput.defaultProps = {
   hasError: false,
   errorText: '',
-  name: '', // TODO сделать required
+  name: '',
   inputClass: '',
   labelClass: '',
   labelInnerClass: '',
@@ -72,10 +72,10 @@ AppInput.defaultProps = {
 AppInput.propTypes = {
   hasError: PropTypes.bool,
   errorText: PropTypes.string,
+  name: PropTypes.string.isRequired,
   inputClass: PropTypes.string,
   labelClass: PropTypes.string,
   labelInnerClass: PropTypes.string,
-  name: PropTypes.string,
   handleBlur: PropTypes.func,
   handleChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

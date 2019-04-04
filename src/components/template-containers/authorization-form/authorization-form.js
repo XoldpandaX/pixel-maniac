@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import AppTitle from 'components/app-title';
 
 import styles from './authorization-form.module.scss';
 
@@ -37,7 +38,8 @@ const AuthorizationFormContainer = (props) => {
     <div className={ authorizationFormContainer }>
       <header className={ containerHeader }>
         { renderIcon(type) }
-        <h3 className={ containerTitle }>{ title }</h3>
+        <AppTitle level='h3'>Login</AppTitle>
+        {/*<h3 className={ containerTitle }>{ title }</h3>*/}
       </header>
       { children }
     </div>
