@@ -1,0 +1,61 @@
+@import 'styles/functions/index.scss';
+
+$col-mr: rem(8.5px);
+$col-ml: rem(8.5px);
+
+.loginForm {
+
+}
+
+.form {
+  $this: &;
+
+  &Label {
+    display: flex;
+
+    &Inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(50px);
+      height: rem(38px);
+      border-right-width: 0;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      background-color: rgba(0,0,0,.6);
+    }
+  }
+
+  &Input {
+    width: 100%;
+    padding: rem(7.5px);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: rgba(0,0,0,.33);
+    font-family: Ubuntu, 'Open Sans', sans-serif;
+    font-weight: 300;
+
+    &::placeholder {
+      color: darkgray;
+    }
+  }
+
+  &Row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Col {
+    width: calc(100% / 2);
+
+    &Left {
+      margin-left: $col-ml;
+    }
+
+    &Right {
+      margin-right: $col-mr;
+    }
+  }
+}
+
+// TODO scss сделать функцию для создания шрифта
