@@ -23,9 +23,7 @@ class LoginForm extends  Component {
       formLabel,
       formLabelInner,
       formRow,
-      formCol,
-      formColLeft,
-      formColRight,
+      formCol
     } = styles;
   
     const userIcon = (
@@ -47,7 +45,7 @@ class LoginForm extends  Component {
     return (
       <form className={ loginForm }>
         <div className={ formRow }>
-          <div className={ `${formCol} ${formColRight}` }>
+          <div className={ formCol }>
             <AppInput
               classNames={ formInput }
               labelClass={ formLabel }
@@ -59,7 +57,7 @@ class LoginForm extends  Component {
               { userIcon }
             </AppInput>
           </div>
-          <div className={ `${formCol} ${formColLeft}` }>
+          <div className={ formCol }>
             <AppInput
               classNames={ formInput }
               labelClass={ formLabel }
@@ -73,6 +71,7 @@ class LoginForm extends  Component {
             </AppInput>
           </div>
         </div>
+        <button className={ `${styles.btn} ${styles.purple}` }>Login</button>
       </form>
     );
   }
