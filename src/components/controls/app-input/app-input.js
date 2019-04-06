@@ -20,6 +20,7 @@ class AppInput extends PureComponent {
       classNames,
       labelClass,
       icon,
+      value,
       labelText,
       labelInnerClass,
       name,
@@ -51,7 +52,9 @@ class AppInput extends PureComponent {
         <input
           id={ `id-${ name }` }
           className={ classNames }
+          name={ name }
           type={ type }
+          value={ value }
           placeholder={ placeholder }
           onChange={ handleChange }
           onBlur={ handleBlur }
@@ -78,7 +81,8 @@ AppInput.defaultProps = {
   icon: '',
   labelText: '',
   labelInnerClass: '',
-  type: 'text'
+  type: 'text',
+  value: ''
 };
 
 AppInput.propTypes = {
@@ -87,13 +91,14 @@ AppInput.propTypes = {
   name: PropTypes.string.isRequired,
   classNames: PropTypes.string,
   labelClass: PropTypes.string,
-  icon: PropTypes.oneOf(['user', 'key']),
+  icon: PropTypes.oneOf(['user', 'key', 'envelope', 'id-card']),
   labelText: PropTypes.string,
   labelInnerClass: PropTypes.string,
   handleBlur: PropTypes.func,
   handleChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 export default AppInput;
