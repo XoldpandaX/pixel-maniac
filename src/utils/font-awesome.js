@@ -6,7 +6,8 @@ import {
   faQuestion,
   faCheck,
   faLock,
-  faPaperPlane
+  faPaperPlane,
+  faIdCard
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -17,7 +18,8 @@ const createFontAwesomeIcons = () => library.add(
   faQuestion,
   faCheck,
   faLock,
-  faPaperPlane
+  faPaperPlane,
+  faIdCard
 );
 
 export default createFontAwesomeIcons;
