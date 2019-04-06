@@ -1,4 +1,4 @@
-import React, { createElement } from 'react';
+import React, { createElement, memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './app-title.module.scss';
@@ -46,4 +46,4 @@ AppTitle.propTypes = {
   hasTextShadow: PropTypes.bool
 };
 
-export default AppTitle;
+export default memo(AppTitle);
