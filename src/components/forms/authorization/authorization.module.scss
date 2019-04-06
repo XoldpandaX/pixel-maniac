@@ -34,7 +34,7 @@ $common-margin: rem(16.5px);
 }
 
 .someText {
-  margin: 0 0 5px 0;
+  margin: 0 0 rem(7px) 0;
   color: white;
   font-size: .8rem;
 }
@@ -58,6 +58,10 @@ $common-margin: rem(16.5px);
     transform: translate(0px, 5px);
     -webkit-transform: translate(0px, 5px);
     box-shadow: 0 1px 0 0;
+  }
+
+  &Wide {
+    width: 100%;
   }
 }
 
