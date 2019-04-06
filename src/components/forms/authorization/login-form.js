@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import AuthorizationInput from 'components/controls/authorization-input';
 
-import styles from "./login-form.module.scss";
+import styles from './authorization.module.scss';
 
 class LoginForm extends  Component {
   state = {

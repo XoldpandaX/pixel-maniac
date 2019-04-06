@@ -1,7 +1,6 @@
 @import 'styles/functions/index.scss';
 
-$col-mr: rem(8.5px);
-$col-ml: rem(8.5px);
+$common-margin: rem(16.5px);
 
 .form {
   $this: &;
@@ -9,6 +8,10 @@ $col-ml: rem(8.5px);
   &Row {
     display: flex;
     flex-flow: column;
+
+    &TwoItems {
+      display: flex;
+    }
   }
 
   &Col {
@@ -16,9 +19,24 @@ $col-ml: rem(8.5px);
     margin-bottom: rem(10px);
 
     &:last-of-type {
-      margin-bottom: rem(16.5px);
+      margin-bottom: $common-margin;
+    }
+
+    &TwoItems {
+      width: calc(100% / 2);
+
+      &:last-of-type {
+        margin-bottom: $common-margin;
+        margin-left: rem(15px);
+      }
     }
   }
+}
+
+.someText {
+  margin: 0 0 5px 0;
+  color: white;
+  font-size: .8rem;
 }
 
 .btn {

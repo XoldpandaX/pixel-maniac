@@ -44,7 +44,7 @@ AuthorizationInput.defaultProps = {
 
 AuthorizationInput.propTypes = {
   onInputChange: PropTypes.func.isRequired,
-  icon: PropTypes.oneOf(['user', 'key', 'envelope']),
+  icon: PropTypes.oneOf(['user', 'key', 'envelope', 'id-card']),
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   errorText: PropTypes.string,
