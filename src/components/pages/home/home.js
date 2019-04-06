@@ -6,11 +6,6 @@ import { LoginForm, RegisterForm } from 'components/forms/authorization';
 import styles from './home.module.scss';
 
 class HomePage extends Component {
-  state = {
-    inputField: '',
-    hasError: false
-  };
-  
   render() {
     const {
       homePage,
