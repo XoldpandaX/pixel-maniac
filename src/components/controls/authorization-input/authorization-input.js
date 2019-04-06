@@ -7,12 +7,15 @@ import styles from './authorization-input.module.scss';
 
 const AuthorizationInput = (props) => {
   const {
-    onInputChange,
     icon,
     name,
     placeholder,
+    hasError,
     errorText,
-    type
+    type,
+    value,
+    onInputChange,
+    onHandleBlur
   } = props;
   
   const {
@@ -28,10 +31,13 @@ const AuthorizationInput = (props) => {
       icon={ icon }
       labelInnerClass={ authLabelInner }
       name={ name }
-      handleChange={ onInputChange }
       placeholder={ placeholder }
+      hasError={ hasError }
       errorText={ errorText }
       type={ type }
+      value={ value }
+      handleChange={ onInputChange }
+      handleBlur={ onHandleBlur }
     />
   );
 };
@@ -39,7 +45,9 @@ const AuthorizationInput = (props) => {
 AuthorizationInput.defaultProps = {
   icon: '',
   placeholder: '',
-  errorText: ''
+  errorText: '',
+  value: '',
+  hasError: false
 };
 
 AuthorizationInput.propTypes = {
@@ -47,8 +55,10 @@ AuthorizationInput.propTypes = {
   icon: PropTypes.oneOf(['user', 'key', 'envelope', 'id-card']),
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  hasError: PropTypes.bool,
   errorText: PropTypes.string,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default memo(AuthorizationInput);
