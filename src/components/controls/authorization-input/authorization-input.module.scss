@@ -1,0 +1,36 @@
+@import 'styles/functions/index.scss';
+
+.auth {
+  &Input {
+    width: 100%;
+    padding: rem(7.5px);
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: rgba(0,0,0,.33);
+    font-family: Ubuntu, 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: .9rem;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.5);
+
+    &::placeholder {
+      color: darkgray;
+    }
+  }
+
+  &Label {
+    display: flex;
+
+    &Inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(50px);
+      height: rem(38px);
+      border-right-width: 0;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      background-color: rgba(0,0,0,.6);
+    }
+  }
+}

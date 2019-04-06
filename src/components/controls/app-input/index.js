@@ -1,6 +1,4 @@
 import AppInput from './app-input';
 
 
-export {
-  AppInput
-}
+export default AppInput;

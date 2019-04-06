@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { CSSTransition } from 'react-transition-group';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 
 import ErrorBubble from 'components/error-bubble';
 
@@ -15,7 +15,6 @@ class AppInput extends PureComponent {
   }
   
   render() {
-    console.info('sdf');
     const {
       errorText,
       classNames,
