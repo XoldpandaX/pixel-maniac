@@ -2,10 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AuthorizationInput from 'components/controls/authorization-input';
+import { withFormValidation } from 'containers/hoc/with-form-validation';
 
 import styles from './authorization.module.scss';
 
 const RegisterForm = (props) => {
+  const {
+    data: {
+      userName,
+      userEmail,
+      userPassword,
+      userRepeatPassword,
+      userFirstName,
+      userLastName
+    },
+    errors,
+    handleInput,
+    handleSubmit,
+    handleBlur
+  } = props;
+  
   const {
     loginForm,
     formRow,
@@ -15,8 +31,12 @@ const RegisterForm = (props) => {
     someText
   } = styles;
   
-  const onNameChange= () => ({ target: { value } }) => this.setState({ userName: value });
-  const onPasswordChange = () => ({ target: { value } }) => this.setState({ password: value });
+  const errorMessages = {
+    username: 'Min - 4 symbols, no num, only latin abc',
+    email: 'Email is invalid or already taken',
+    password: 'Pass at least 6 characters including number, one spec symbol',
+    passwordRepeat: 'Введенные пароли не совпадают',
+  };
   
   return (
     <form className={ loginForm }>
@@ -25,40 +45,52 @@ const RegisterForm = (props) => {
           <AuthorizationInput
             type='text'
             name='userName'
+            value={ userName }
             placeholder='User Name'
-            errorText='mfcku'
+            hasError={ errors.userName }
+            errorText={ errorMessages.username }
             icon='user'
-            onInputChange={ onNameChange }
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
           />
         </div>
         <div className={ formCol }>
           <AuthorizationInput
             type='email'
             name='userEmail'
+            value={ userEmail }
             placeholder='Email'
-            errorText='mfcku'
+            hasError={ errors.userEmail }
+            errorText={ errorMessages.email }
             icon='envelope'
-            onInputChange={ onPasswordChange }
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
           />
         </div>
         <div className={ formCol }>
           <AuthorizationInput
             type='password'
             name='userPassword'
-            placeholder='User Name'
-            errorText='mfcku'
-            icon='key'
-            onInputChange={ onPasswordChange }
-          />
-        </div>
-        <div className={ formCol }>
-          <AuthorizationInput
-            type='password'
-            name='userPassword'
+            value={ userPassword }
             placeholder='Password'
-            errorText='mfcku'
+            hasError={ errors.userPassword }
+            errorText={ errorMessages.password }
             icon='key'
-            onInputChange={ onPasswordChange }
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
+          />
+        </div>
+        <div className={ formCol }>
+          <AuthorizationInput
+            type='password'
+            name='userRepeatPassword'
+            value={ userRepeatPassword }
+            placeholder='Password'
+            hasError={ errors.userRepeatPassword }
+            errorText={ errorMessages.passwordRepeat }
+            icon='key'
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
           />
         </div>
       </div>
@@ -68,26 +100,74 @@ const RegisterForm = (props) => {
           <AuthorizationInput
             type='text'
             name='userFirstName'
-            placeholder='Repeat password'
+            value={ userFirstName }
+            placeholder='First name'
             errorText='mfcku'
             icon='id-card'
-            onInputChange={ onPasswordChange }
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
           />
         </div>
         <div className={ formColTwoItems }>
           <AuthorizationInput
             type='text'
             name='userLastName'
+            value={ userLastName }
             placeholder='Last name'
             errorText='mfcku'
             icon='id-card'
-            onInputChange={ onPasswordChange }
+            onInputChange={ handleInput }
+            onHandleBlur={ handleBlur }
           />
         </div>
       </div>
-      <button className={ `${styles.btn} ${styles.purple}` }>Login</button>
+      <button
+        className={ `${styles.btn} ${styles.purple} ${styles.btnWide}` }
+        onClick={ handleSubmit }
+      >
+        Register
+      </button>
     </form>
   );
 };
 
-export default RegisterForm;
+RegisterForm.propTypes = {
+  data: PropTypes.shape({
+    userName: PropTypes.string.isRequired,
+    userEmail: PropTypes.string.isRequired,
+    userPassword: PropTypes.string.isRequired,
+    userRepeatPassword: PropTypes.string.isRequired,
+    userFirstName: PropTypes.string.isRequired,
+    userLastName: PropTypes.string.isRequired
+  }).isRequired,
+  errors: PropTypes.shape({
+    userName: PropTypes.bool.isRequired,
+    userEmail: PropTypes.bool.isRequired,
+    userPassword: PropTypes.bool.isRequired,
+    userRepeatPassword: PropTypes.bool.isRequired
+  }).isRequired,
+  handleInput: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+const initialFormFields = {
+  data: {
+    userName: '',
+    userEmail: '',
+    userPassword: '',
+    userRepeatPassword: '',
+    userFirstName: '',
+    userLastName: ''
+  },
+  errors: {
+    userName: false,
+    userEmail: false,
+    userPassword: false,
+    userRepeatPassword: false
+  }
+};
+
+export default withFormValidation(
+  initialFormFields.data,
+  initialFormFields.errors
+)(RegisterForm);

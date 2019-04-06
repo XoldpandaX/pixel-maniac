@@ -28,7 +28,7 @@ class LoginForm extends  Component {
           <div className={ formCol }>
             <AuthorizationInput
               type='text'
-              name='userName'
+              name='userNameLogin'
               placeholder='User Name'
               errorText='mfcku'
               icon='user'
@@ -38,7 +38,7 @@ class LoginForm extends  Component {
           <div className={ formCol }>
             <AuthorizationInput
               type='password'
-              name='userPassword'
+              name='userPasswordLogin'
               placeholder='User Name'
               errorText='mfcku'
               icon='key'
