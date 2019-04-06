@@ -29,7 +29,7 @@ class LoginForm extends  Component {
             <AuthorizationInput
               type='text'
               name='userNameLogin'
-              placeholder='User Name'
+              placeholder='User name'
               errorText='mfcku'
               icon='user'
               onInputChange={ this.onNameChange }
@@ -39,7 +39,7 @@ class LoginForm extends  Component {
             <AuthorizationInput
               type='password'
               name='userPasswordLogin'
-              placeholder='User Name'
+              placeholder='Password'
               errorText='mfcku'
               icon='key'
               onInputChange={ this.onPasswordChange }

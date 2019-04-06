@@ -46,7 +46,7 @@ const RegisterForm = (props) => {
             type='text'
             name='userName'
             value={ userName }
-            placeholder='User Name'
+            placeholder='User name'
             hasError={ errors.userName }
             errorText={ errorMessages.username }
             icon='user'
@@ -85,7 +85,7 @@ const RegisterForm = (props) => {
             type='password'
             name='userRepeatPassword'
             value={ userRepeatPassword }
-            placeholder='Password'
+            placeholder='Repeat password'
             hasError={ errors.userRepeatPassword }
             errorText={ errorMessages.passwordRepeat }
             icon='key'
