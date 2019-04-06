@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { CSSTransition } from 'react-transition-group';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import ErrorBubble from 'components/error-bubble';
 
@@ -14,11 +15,13 @@ class AppInput extends PureComponent {
   }
   
   render() {
+    console.info('sdf');
     const {
       errorText,
-      children,
       classNames,
       labelClass,
+      icon,
+      labelText,
       labelInnerClass,
       name,
       handleBlur,
@@ -32,12 +35,20 @@ class AppInput extends PureComponent {
       exit: 250
     };
     
+    const labelIcon = icon && (
+      <FontAwesomeIcon
+        icon={ icon }
+        size='sm'
+        color='white'
+      />
+    );
+    
     return (
       <label
         className={ labelClass }
         htmlFor={ `id-${ name }` }
       >
-        <span className={ labelInnerClass }>{ children }</span>
+        <span className={ labelInnerClass }>{ labelIcon || labelText }</span>
         <input
           id={ `id-${ name }` }
           className={ classNames }
@@ -65,6 +76,8 @@ AppInput.defaultProps = {
   name: '',
   classNames: '',
   labelClass: '',
+  icon: '',
+  labelText: '',
   labelInnerClass: '',
   type: 'text'
 };
@@ -75,6 +88,8 @@ AppInput.propTypes = {
   name: PropTypes.string.isRequired,
   classNames: PropTypes.string,
   labelClass: PropTypes.string,
+  icon: PropTypes.oneOf(['user', 'key']),
+  labelText: PropTypes.string,
   labelInnerClass: PropTypes.string,
   handleBlur: PropTypes.func,
   handleChange: PropTypes.func.isRequired,

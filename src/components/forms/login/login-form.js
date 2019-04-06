@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import AppInput from 'components/controls/app-input';
 
@@ -8,13 +7,13 @@ import styles from './login.module.scss';
 
 class LoginForm extends  Component {
   state = {
-    inputField: '',
+    userName: '',
+    password: '',
     hasError: false
   };
   
-  onInputChange = (e) => {
-    this.setState({ inputField: e.target.value });
-  };
+  onNameChange = ({ target: { value } }) => this.setState({ userName: value });
+  onPasswordChange = ({ target: { value } }) => this.setState({ password: value });
   
   render () {
     const {
@@ -25,22 +24,6 @@ class LoginForm extends  Component {
       formRow,
       formCol
     } = styles;
-  
-    const userIcon = (
-      <FontAwesomeIcon
-        icon='user'
-        size='sm'
-        color='white'
-      />
-    );  // stop re-render
-  
-    const keyIcon = (
-      <FontAwesomeIcon
-        icon='key'
-        size='sm'
-        color='white'
-      />
-    );  // stop re-render
     
     return (
       <form className={ loginForm }>
@@ -49,26 +32,24 @@ class LoginForm extends  Component {
             <AppInput
               classNames={ formInput }
               labelClass={ formLabel }
+              icon='user'
               labelInnerClass={ formLabelInner }
               name='userName'
-              handleChange={ this.onInputChange }
+              handleChange={ this.onNameChange }
               placeholder='User name'
-            >
-              { userIcon }
-            </AppInput>
+            />
           </div>
           <div className={ formCol }>
             <AppInput
               classNames={ formInput }
               labelClass={ formLabel }
+              icon='key'
               labelInnerClass={ formLabelInner }
               type='password'
               name='userPassword'
-              handleChange={ this.onInputChange }
+              handleChange={ this.onPasswordChange }
               placeholder='Password'
-            >
-              { keyIcon }
-            </AppInput>
+            />
           </div>
         </div>
         <button className={ `${styles.btn} ${styles.purple}` }>Login</button>
