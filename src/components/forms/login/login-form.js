@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import AppInput from 'components/controls/app-input';
+import AuthorizationInput from 'components/controls/authorization-input';
 
-import styles from './login.module.scss';
+import styles from "./login-form.module.scss";
 
 class LoginForm extends  Component {
   state = {
@@ -18,9 +18,6 @@ class LoginForm extends  Component {
   render () {
     const {
       loginForm,
-      formInput,
-      formLabel,
-      formLabelInner,
       formRow,
       formCol
     } = styles;
@@ -29,26 +26,23 @@ class LoginForm extends  Component {
       <form className={ loginForm }>
         <div className={ formRow }>
           <div className={ formCol }>
-            <AppInput
-              classNames={ formInput }
-              labelClass={ formLabel }
-              icon='user'
-              labelInnerClass={ formLabelInner }
+            <AuthorizationInput
+              type='text'
               name='userName'
-              handleChange={ this.onNameChange }
-              placeholder='User name'
+              placeholder='User Name'
+              errorText='mfcku'
+              icon='user'
+              onInputChange={ this.onNameChange }
             />
           </div>
           <div className={ formCol }>
-            <AppInput
-              classNames={ formInput }
-              labelClass={ formLabel }
-              icon='key'
-              labelInnerClass={ formLabelInner }
+            <AuthorizationInput
               type='password'
               name='userPassword'
-              handleChange={ this.onPasswordChange }
-              placeholder='Password'
+              placeholder='User Name'
+              errorText='mfcku'
+              icon='key'
+              onInputChange={ this.onPasswordChange }
             />
           </div>
         </div>
