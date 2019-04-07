@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { regExp } from '../../constants';
 
-export function withFormValidation(initialFormFields, requiredFields) {
+function withFormValidation(initialFormFields, requiredFields) {
   return (WrappedComponent) => (
     class WrappedForm extends Component {
       state = {
@@ -26,9 +26,8 @@ export function withFormValidation(initialFormFields, requiredFields) {
         return regExp.verifyPassword.test(password);
       }
   
-      checkPasswordEqual = () => {
-        const { userPassword, userRepeatPassword } = this.state.data;
-        return userPassword === userRepeatPassword;
+      checkPasswordEqual = (repeatPassword) => {
+        return this.state.data.userPassword === repeatPassword;
       };
   
       availableChecks = {
@@ -37,20 +36,11 @@ export function withFormValidation(initialFormFields, requiredFields) {
         userPassword: this.checkPassword,
         userRepeatPassword: this.checkPasswordEqual
       };
-      
-      changeErrorVal = (name, val) => {
-        this.setState(({ errors }) => ({
-          errors: {
-            ...errors,
-            [name]: val
-          }
-        }))
-      };
-      
-      changeDataVal = (name, val) => {
-        this.setState(({ data }) => ({
-          data: {
-            ...data,
+  
+      changeStateFieldVal = (name, val, changedField) => {
+        this.setState((prevState) => ({
+          [changedField]: {
+            ...prevState[changedField],
             [name]: val
           }
         }))
@@ -60,26 +50,41 @@ export function withFormValidation(initialFormFields, requiredFields) {
         const trimmedValue = value.trim();
         
         if (!this.state.errors[name]) {
-          this.changeDataVal(name, trimmedValue);
+          this.changeStateFieldVal(name, trimmedValue, 'data');
         } else {
-          this.changeDataVal(name, trimmedValue);
-          const res = this.availableChecks[name](trimmedValue);
-          return res && this.changeErrorVal(name, false);
+          this.changeStateFieldVal(name, trimmedValue, 'data');
+          const res = trimmedValue
+            ? this.availableChecks[name](trimmedValue)
+            : false;
+          
+          return res && this.changeStateFieldVal(name, false, 'errors');
         }
       };
       
       handleBlur = ({ target: { name, value } }) => {
         const trimmedValue = value.trim();
-        const res = trimmedValue ? this.availableChecks[name](trimmedValue) : false;
+        const checkFunction = this.availableChecks[name];
         
-        if (trimmedValue !== '' && !res) {
-          this.changeErrorVal(name, true);
+        const res = trimmedValue && checkFunction
+          ? checkFunction(trimmedValue)
+          : false;
+        
+        if (trimmedValue !== '' && !res && checkFunction) {
+          this.changeStateFieldVal(name, true, 'errors');
         }
       };
       
       handleSubmit = (e) => {
         e.preventDefault();
-        console.info('sfsdf');
+        
+        const { data, errors } = this.state;
+        
+        const isAllDataFilled = Object.values(data).every((el) => el.length);
+        const hasDataErrors = Object.values(errors).every((el) => !el);
+        
+        if (isAllDataFilled && !!hasDataErrors) {
+          console.info(data);
+        }
       };
       
       render () {
@@ -96,5 +101,7 @@ export function withFormValidation(initialFormFields, requiredFields) {
     }
   );
 }
+
+export default withFormValidation;
 
 
