@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import AuthorizationInput from 'components/controls/authorization-input';
-import { withFormValidation } from 'containers/hoc/with-form-validation';
+import withFormValidation from 'containers/hoc/with-form-validation';
 
 import styles from './authorization.module.scss';
 
@@ -35,7 +35,7 @@ const RegisterForm = (props) => {
     username: 'Min - 4 symbols, no num, only latin abc',
     email: 'Email is invalid or already taken',
     password: 'Pass at least 6 characters including number, one spec symbol',
-    passwordRepeat: 'Введенные пароли не совпадают',
+    passwordRepeat: 'Passwords are not equal',
   };
   
   return (
