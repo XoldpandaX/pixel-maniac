@@ -4,6 +4,19 @@ const regExp = {
   verifyPassword: /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*.,_])/
 };
 
+const routes = {
+
+};
+
+const authorizationErrors = {
+  username: 'Min - 4 symbols, no num, only latin abc',
+  email: 'Email is invalid or already taken',
+  password: 'Pass at least 6 characters including number, one spec symbol',
+  passwordRepeat: 'Passwords are not equal',
+};
+
 export {
-  regExp
+  authorizationErrors,
+  regExp,
+  routes
 }

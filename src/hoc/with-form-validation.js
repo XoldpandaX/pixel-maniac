@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as authActions from 'store/auth/actions';
 
 import { regExp } from '../../constants';
 
@@ -83,7 +85,7 @@ function withFormValidation(initialFormFields, requiredFields) {
         const hasDataErrors = Object.values(errors).every((el) => !el);
         
         if (isAllDataFilled && !!hasDataErrors) {
-          console.info(data);
+          //this.props.dispatch(authActions.register(data));
         }
       };
       
