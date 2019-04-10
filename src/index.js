@@ -20,6 +20,7 @@ const store = createStore(
   combineReducers(reducers),
   applyMiddleware(thunk)
 );
+
 const application = (
   <Provider store={ store }>
     <Router>

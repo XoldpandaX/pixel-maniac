@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as topicActions from 'store/topics/actions';
-import * as topicsSelectors from 'store/topics/reducers';
+import * as topicsSelectors from 'store/topics/selectors';
 
 import ListView from 'components/list-view';
 

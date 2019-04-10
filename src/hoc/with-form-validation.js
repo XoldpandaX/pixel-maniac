@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as authActions from 'store/auth/actions';
 
-import { regExp } from '../../constants';
+import { regExp } from '../constants';
 
 function withFormValidation(initialFormFields, requiredFields) {
   return (WrappedComponent) => (

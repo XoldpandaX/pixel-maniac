@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { authorizationErrors } from '../../../constants';
 
 import AuthorizationInput from 'components/controls/authorization-input';
-import withFormValidation from 'containers/hoc/with-form-validation';
+import withFormValidation from 'hoc/with-form-validation';
 
 import styles from './authorization.module.scss';
 
@@ -31,13 +32,6 @@ const RegisterForm = (props) => {
     someText
   } = styles;
   
-  const errorMessages = {
-    username: 'Min - 4 symbols, no num, only latin abc',
-    email: 'Email is invalid or already taken',
-    password: 'Pass at least 6 characters including number, one spec symbol',
-    passwordRepeat: 'Passwords are not equal',
-  };
-  
   return (
     <form className={ loginForm }>
       <div className={ formRow }>
@@ -48,7 +42,7 @@ const RegisterForm = (props) => {
             value={ userName }
             placeholder='User name'
             hasError={ errors.userName }
-            errorText={ errorMessages.username }
+            errorText={ authorizationErrors.username }
             icon='user'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
@@ -61,7 +55,7 @@ const RegisterForm = (props) => {
             value={ userEmail }
             placeholder='Email'
             hasError={ errors.userEmail }
-            errorText={ errorMessages.email }
+            errorText={ authorizationErrors.email }
             icon='envelope'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
@@ -74,7 +68,7 @@ const RegisterForm = (props) => {
             value={ userPassword }
             placeholder='Password'
             hasError={ errors.userPassword }
-            errorText={ errorMessages.password }
+            errorText={ authorizationErrors.password }
             icon='key'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
@@ -87,7 +81,7 @@ const RegisterForm = (props) => {
             value={ userRepeatPassword }
             placeholder='Repeat password'
             hasError={ errors.userRepeatPassword }
-            errorText={ errorMessages.passwordRepeat }
+            errorText={ authorizationErrors.passwordRepeat }
             icon='key'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
