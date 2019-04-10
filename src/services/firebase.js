@@ -10,8 +10,16 @@ class FireBase {
     this.auth = app.auth();
   }
   
-  registerUser = (email, password) => {
+  register = (email, password) => {
     return this.auth.createUserWithEmailAndPassword(email, password);
+  };
+  
+  signIn = (email, password) => {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  };
+  
+  signOut = () => {
+    return this.auth.signOut();
   }
 }
 
