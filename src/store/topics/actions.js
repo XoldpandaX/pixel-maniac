@@ -3,7 +3,7 @@ import * as topicsSelectors from './reducers';
 
 function fetchTopics() {
   return async(dispatch) => {
-    try{
+    try {
       //const subredditArray = await RedditService.getDefaultSubreddits();
       //const topicsByUrl = keyBy(subredditArray, ({ url }) => url);
       
