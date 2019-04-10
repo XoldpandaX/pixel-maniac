@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-react": "^7.12.4",
+    "firebase": "^5.9.3",
     "izitoast": "^1.4.0",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
@@ -41,6 +42,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
