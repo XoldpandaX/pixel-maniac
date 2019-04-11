@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { authorizationErrors } from '../../../constants';
 
 import AuthorizationInput from 'components/controls/authorization-input';
-import withFormValidation from 'hoc/with-form-validation';
+import withFormValidation from 'containers/hoc/with-form-validation';
 
 import styles from './authorization.module.scss';
 
@@ -144,14 +144,14 @@ RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-const initialFormFields = {
+const initialFormFields = { // TODO after test set empty strings
   data: {
-    userName: '',
-    userEmail: '',
-    userPassword: '',
-    userRepeatPassword: '',
-    userFirstName: '',
-    userLastName: ''
+    userName: 'dddd',
+    userEmail: 'dd@dd.dd',
+    userPassword: '123456q.',
+    userRepeatPassword: '123456q.',
+    userFirstName: 'dfsdf',
+    userLastName: 'sfsdf'
   },
   errors: {
     userName: false,
