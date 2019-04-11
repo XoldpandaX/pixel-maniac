@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as authActions from 'store/auth/actions';
 import Immutable from 'seamless-immutable';
 
-import { notification } from '../utils'
-import { regExp } from '../constants';
+import { showNotification } from '../../utils'
+import { regExp } from '../../constants';
 
 const withFormValidation = (initialFormFields, requiredFields) => (WrappedComponent) => {
   class WrappedForm extends Component {
@@ -13,7 +13,7 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
       errors: requiredFields
     });
 
-    checkName(userName) {
+    static checkName(userName) {
       return (
         userName &&
         userName.length >= 4 &&
@@ -21,11 +21,11 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
       );
     }
 
-    checkEmail(email) {
+    static checkEmail(email) {
       return regExp.verifyEmail.test(email);
     }
 
-    checkPassword(password) {
+    static checkPassword(password) {
       return regExp.verifyPassword.test(password);
     }
 
@@ -34,9 +34,9 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
     };
 
     availableChecks = {
-      userName: this.checkName,
-      userEmail: this.checkEmail,
-      userPassword: this.checkPassword,
+      userName: WrappedForm.checkName,
+      userEmail: WrappedForm.checkEmail,
+      userPassword: WrappedForm.checkPassword,
       userRepeatPassword: this.checkPasswordEqual
     };
 
@@ -88,8 +88,9 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
 
       if (isAllDataFilled && !!hasDataErrors) {
         this.props.dispatch(authActions.register(data));
+        console.info(data);
       } else if (hasSomeFilledField && !isAllDataFilled) {
-        notification({
+        showNotification({
           title: 'Form error',
           type: 'error',
           message: 'Fill in all the fields',
