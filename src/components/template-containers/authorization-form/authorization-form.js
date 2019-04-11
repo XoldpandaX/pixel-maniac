@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import AppTitle from 'components/app-title';
+import AppTitle from 'components/common/app-title';
 
 import styles from './authorization-form.module.scss';
 
