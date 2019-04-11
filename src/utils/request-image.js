@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { notification } from 'utils';
+import { showNotification } from 'utils';
 
 import { IMAGE_SERVER_ENDPOINT, IMAGE_SERVER_KEY } from 'config';
 
@@ -15,7 +15,7 @@ requestImage.interceptors.response.use((response) => {
     const currentError = response.data.error;
     const expectedError = 'invalid_auth';
     
-    notification({
+    showNotification({
       title: 'Error',
       message: currentError === expectedError ? `wrong api key` : currentError,
       type: 'error'
@@ -23,7 +23,7 @@ requestImage.interceptors.response.use((response) => {
   }
   return response;
 },(error) => {
-  notification({
+  showNotification({
     title: 'Error',
     message: error,
     type: 'error'
