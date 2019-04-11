@@ -8,12 +8,12 @@ import { NOTIFICATION_TIMEOUT } from 'config';
  * @param { object } options - notification options
  * @param { string } options.title - notification title
  * @param { string } options.message - notification message
- * @param { string } [options.type=''] - position of the notification relative to the screen
+ * @param { string } options.type - type of notification -  error or info or success or warning
  * @param { number } [options.timeout=NOTIFICATION_TIMEOUT] - time during which the message disappears
  * @param { string } [options.position='topRight'] - position of the notification relative to the screen
  * @returns { function } - if success return function which generate bubble message otherwise return console.error('err')
  */
-function notification({ title, type='', message, timeout = NOTIFICATION_TIMEOUT, position = 'topRight' } = {}) {
+function notification({ title, type, message, timeout = NOTIFICATION_TIMEOUT, position = 'topRight' } = {}) {
   try {
     if (!title || !message) {
       return console.error(
