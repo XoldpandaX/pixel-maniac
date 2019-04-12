@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { authorizationErrors } from '../../../constants';
 
+import AppButton from 'components/common/app-button';
 import AuthorizationInput from 'components/controls/authorization-input';
 import withFormValidation from 'containers/hoc/with-form-validation';
 
@@ -115,12 +116,15 @@ const RegisterForm = (props) => {
           />
         </div>
       </div>
-      <button
-        className={ `${styles.btn} ${styles.purple} ${styles.btnWide}` }
-        onClick={ handleSubmit }
-      >
-        Register
-      </button>
+      {/*<button*/}
+      {/*  className={ `${styles.btn} ${styles.purple} ${styles.btnWide}` }*/}
+      {/*  onClick={ handleSubmit }*/}
+      {/*>*/}
+      {/*  Register*/}
+      {/*</button>*/}
+      <AppButton
+        text='hello world'
+      />
     </form>
   );
 };

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './spinner.module.scss';
+import styles from './loader.module.scss';
 
-const Spinner = ({ size, className }) => {
+const Loader = ({ size, className }) => {
   const { loader } = styles;
   const sizes = {
     s: styles.loaderSizeS,
@@ -21,12 +21,12 @@ const Spinner = ({ size, className }) => {
   );
 };
 
-Spinner.defaultProps = {
+Loader.defaultProps = {
   className: ''
 };
 
-Spinner.propTypes = {
+Loader.propTypes = {
   size: PropTypes.oneOf(['s', 'm', 'l', 'xl']).isRequired
 };
 
-export default Spinner;
+export default Loader;

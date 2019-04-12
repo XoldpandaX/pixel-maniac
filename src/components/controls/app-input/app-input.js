@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
 
-import ErrorBubble from 'components/error-bubble';
+import ErrorBubble from 'components/common/error-bubble';
 
 const AppInput = (props) => {
   const {
