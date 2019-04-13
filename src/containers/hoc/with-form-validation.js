@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as authActions from 'store/auth/actions';
 import Immutable from 'seamless-immutable';
+import * as authActions from 'store/auth/actions';
+import * as authSelectors from 'store/auth/selectors';
 
 import { showNotification } from '../../utils'
 import { regExp } from '../../constants';
@@ -12,7 +13,7 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
       data: initialFormFields,
       errors: requiredFields
     });
-
+  
     static checkName(userName) {
       return (
         userName &&
@@ -104,6 +105,7 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
         <WrappedComponent
           { ...this.props }
           { ...this.state }
+          isLoading={ this.props.isAuthLoading }
           handleInput={ this.handleInput }
           handleSubmit={ this.handleSubmit }
           handleBlur={ this.handleBlur }
@@ -112,7 +114,7 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
     }
   }
   
-  return connect(null)(WrappedForm);
+  return connect(authSelectors.getLoadingStatus)(WrappedForm);
 };
 
 
