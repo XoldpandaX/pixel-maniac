@@ -153,10 +153,10 @@ RegisterForm.propTypes = {
 
 const initialFormFields = { // TODO after test set empty strings
   data: {
-    userName: 'dddd',
-    userEmail: 'dd@dd.dd',
-    userPassword: '123456q.',
-    userRepeatPassword: '123456q.',
+    userName: '',
+    userEmail: '',
+    userPassword: '',
+    userRepeatPassword: '',
     userFirstName: '',
     userLastName: ''
   },
