@@ -82,15 +82,19 @@ const withFormValidation = (initialFormFields, requiredFields) => (WrappedCompon
       e.preventDefault();
 
       const { data, errors } = this.state;
-
-      const isAllDataFilled = Object.values(data).every((el) => el.length);
-      const hasSomeFilledField = Object.values(data).some((el) => el.length);
       const hasDataErrors = Object.values(errors).every((el) => !el);
+      
+      const isAllDataFilled = Object.entries(data)
+        .filter(([fieldKey]) => {
+          const optionalFields = ['userFirstName', 'userLastName'];
+          return !optionalFields.includes(fieldKey);
+        })
+        .map(([fieldKeykey, fieldValue]) => fieldValue)
+        .every((fieldValue) => fieldValue.length);
 
       if (isAllDataFilled && !!hasDataErrors) {
         this.props.dispatch(authActions.register(data));
-        console.info(data);
-      } else if (hasSomeFilledField && !isAllDataFilled) {
+      } else {
         showNotification({
           title: 'Form error',
           type: 'error',
