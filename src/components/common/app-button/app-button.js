@@ -7,35 +7,47 @@ import styles from './app-button.module.scss';
 
 const AppButton = (props) => {
   const {
-    type,
     text,
-    isLoading
+    isLoading,
+    isWide,
+    clickHandler
   } = props;
   
   const {
-    actionButton,
-    blue,
-    red,
-    green,
-    yellow
+    btn,
+    primary,
+    disabled,
+    wide
   } = styles;
   
-  const classNames = `${ actionButton } ${ blue }`;
+  const classNames = `
+    ${ btn } ${ isLoading && disabled }
+    ${ primary }
+    ${ isWide && wide }
+  `;
   const content = isLoading ? <Loader size='m' /> : text;
   
   return (
     <button
-      className={ classNames }>{ content }</button>
+      className={ classNames }
+      disabled={ isLoading }
+      onClick={ clickHandler }
+    >
+      { content }
+    </button>
   );
 };
 
 AppButton.defaultProps = {
-  isLoading: false
+  isLoading: false,
+  isWide: false
 };
 
 AppButton.propTypes = {
   text: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  isWide: PropTypes.bool,
+  clickHandler: PropTypes.func.isRequired
 };
 
 export default memo(AppButton);
