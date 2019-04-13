@@ -1,0 +1,1 @@
+export const CHANGE_LOADING_STATUS = 'auth.CHANGE_LOADING_STATUS';
