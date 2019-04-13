@@ -157,8 +157,8 @@ const initialFormFields = { // TODO after test set empty strings
     userEmail: 'dd@dd.dd',
     userPassword: '123456q.',
     userRepeatPassword: '123456q.',
-    userFirstName: 'dfsdf',
-    userLastName: 'sfsdf'
+    userFirstName: '',
+    userLastName: ''
   },
   errors: {
     userName: false,
