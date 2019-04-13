@@ -9,14 +9,16 @@
   @extend %common-styles;
   color: #ffffff;
   font-size: 10px;
-  margin: 80px auto;
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   text-indent: -9999em;
   transform: translateZ(0);
-  animation-delay: -0.16s;
+  animation-delay: -0.12s;
 
   &:before {
-    animation-delay: -0.32s;
+    animation-delay: -0.28s;
   }
 
   &:before,
@@ -28,13 +30,14 @@
   }
 
   &Size {
-    @each $name, $size, $indent in
-            (S, .6em, 1.4em),
-            (M, .8em, 1.6em),
-            (L, 1em, 1.8em),
-            (XL, 1.2em, 2em) {
+    @each $name, $size, $indent, $topAbsoluteIndent in
+            (S, .6em, 1.4em, -10px),
+            (M, .8em, 1.6em, -11px),
+            (L, 1em, 1.8em, -12px),
+            (XL, 1.2em, 2em, -13px) {
 
       &#{ $name } {
+        top: $topAbsoluteIndent;
         width: $size;
         height: $size;
 
