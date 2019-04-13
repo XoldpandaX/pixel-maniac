@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import AppButton from 'components/common/app-button';
 import AuthorizationInput from 'components/controls/authorization-input';
 
 import styles from './authorization.module.scss';
@@ -19,7 +20,8 @@ class LoginForm extends  Component {
     const {
       loginForm,
       formRow,
-      formCol
+      formCol,
+      buttonContainer
     } = styles;
     
     return (
@@ -46,7 +48,12 @@ class LoginForm extends  Component {
             />
           </div>
         </div>
-        <button className={ `${styles.btn} ${styles.purple}` }>Login</button>
+        <div className={ buttonContainer }>
+          <AppButton
+            text='Login'
+            clickHandler={ () => console.log('hello world') }
+          />
+        </div>
       </form>
     );
   }

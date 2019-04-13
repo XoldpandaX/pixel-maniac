@@ -19,6 +19,7 @@ const RegisterForm = (props) => {
       userLastName
     },
     errors,
+    isLoading,
     handleInput,
     handleSubmit,
     handleBlur
@@ -116,17 +117,18 @@ const RegisterForm = (props) => {
           />
         </div>
       </div>
-      {/*<button*/}
-      {/*  className={ `${styles.btn} ${styles.purple} ${styles.btnWide}` }*/}
-      {/*  onClick={ handleSubmit }*/}
-      {/*>*/}
-      {/*  Register*/}
-      {/*</button>*/}
       <AppButton
-        text='hello world'
+        text='Register'
+        isWide={ true }
+        isLoading={ isLoading }
+        clickHandler={ handleSubmit }
       />
     </form>
   );
+};
+
+RegisterForm.defaultProps = {
+  isLoading: false
 };
 
 RegisterForm.propTypes = {
@@ -144,6 +146,7 @@ RegisterForm.propTypes = {
     userPassword: PropTypes.bool.isRequired,
     userRepeatPassword: PropTypes.bool.isRequired
   }).isRequired,
+  isLoading: PropTypes.bool,
   handleInput: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };

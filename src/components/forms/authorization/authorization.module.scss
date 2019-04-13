@@ -33,45 +33,13 @@ $common-margin: rem(16.5px);
   }
 }
 
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .someText {
   margin: 0 0 rem(7px) 0;
   color: white;
   font-size: .8rem;
 }
-
-.btn {
-  cursor: pointer;
-  display: block;
-  margin-left: auto;
-  border: none;
-  border-radius: 5px;
-  padding: rem(10px) rem(40px);
-  font-size: .8rem;
-  font-family: Ubuntu, 'Open Sans', sans-serif;
-  font-weight: 400;
-  text-shadow: 1px 1px 0 rgba(0,0,0,.5);
-  text-decoration: none;
-  color: #fff;
-  position: relative;
-
-  &:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0 1px 0 0;
-  }
-
-  &Wide {
-    width: 100%;
-  }
-}
-
-.purple {
-  background-color: #9b59b6;
-  box-shadow: 0px 2px 0px 0px #82409D;
-}
-
-.purple:hover {
-  background-color: #B573D0;
-}
-
-// TODO scss сделать функцию для создания шрифта
