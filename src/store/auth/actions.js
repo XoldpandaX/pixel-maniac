@@ -1,16 +1,14 @@
 import * as types from './action-types';
-import Firebase from 'services/firebase';
 
 function register(userRegInfo) {
-  return async(dispatch) => {
+  return async(dispatch, getState, { getFirebase, getFirestore }) => {
     try {
       dispatch({
         type: types.CHANGE_LOADING_STATUS,
         status: true
       });
       
-      const { userEmail, userPassword } = userRegInfo;
-      const data = await Firebase.call('registration', userEmail, userPassword);
+      //const { userEmail, userPassword } = userRegInfo;
       
     } catch (e) {
       console.error('action: register', e);

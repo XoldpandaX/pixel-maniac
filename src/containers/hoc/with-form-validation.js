@@ -7,7 +7,8 @@ import * as authSelectors from 'store/auth/selectors';
 import { showNotification } from '../../utils'
 import { regExp } from '../../constants';
 
-const withFormValidation = (initialFormFields, requiredFields) => (WrappedComponent) => {
+const withFormValidation = (initialFormFields, requiredFields) =>
+  (WrappedComponent) => {
   class WrappedForm extends Component {
     state = Immutable({
       data: initialFormFields,
