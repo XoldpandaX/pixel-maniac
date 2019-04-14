@@ -92,6 +92,8 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
         })
         .map(([fieldKeykey, fieldValue]) => fieldValue)
         .every((fieldValue) => fieldValue.length);
+      
+      const hasOneFilledField = Object.values(data).some((field) => field);
 
       if (isAllDataFilled && !!hasDataErrors) {
         const { dispatch } = this.props;
@@ -102,12 +104,14 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
           : dispatch(authActions.login({ email: userEmail, password: userPassword }))
       }
       
-      showNotification({
-        title: 'Form error',
-        type: 'error',
-        message: `Fill in all the fields to ${ submitType }`,
-        timeout: 2500
-      });
+      if (hasOneFilledField) {
+        showNotification({
+          title: 'Form error',
+          type: 'error',
+          message: `Fill in all the fields to ${ submitType }`,
+          timeout: 2500
+        });
+      }
     };
 
     render () {
