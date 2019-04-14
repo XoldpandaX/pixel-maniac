@@ -7,7 +7,7 @@ import * as authSelectors from 'store/auth/selectors';
 import { showNotification } from '../../utils'
 import { regExp } from '../../constants';
 
-const withFormValidation = (initialFormFields, requiredFields) =>
+const withFormValidation = (initialFormFields, requiredFields, submitType) =>
   (WrappedComponent) => {
   class WrappedForm extends Component {
     state = Immutable({
@@ -94,15 +94,17 @@ const withFormValidation = (initialFormFields, requiredFields) =>
         .every((fieldValue) => fieldValue.length);
 
       if (isAllDataFilled && !!hasDataErrors) {
-        this.props.dispatch(authActions.register(data));
-      } else {
-        showNotification({
-          title: 'Form error',
-          type: 'error',
-          message: 'Fill in all the fields',
-          timeout: 2500
-        });
+        return submitType === 'register'
+          ? this.props.dispatch(authActions.register(data))
+          : console.info(data);
       }
+      
+      showNotification({
+        title: 'Form error',
+        type: 'error',
+        message: `Fill in all the fields to ${ submitType }`,
+        timeout: 2500
+      });
     };
 
     render () {
