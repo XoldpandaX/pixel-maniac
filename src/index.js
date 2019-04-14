@@ -13,7 +13,7 @@ import 'index.scss';
 createFontAwesomeIcons();
 const store = storeCreator();
 
-const application = (
+const application = (store) => (
   <Provider store={ store }>
     <Router>
       <App />
@@ -21,4 +21,6 @@ const application = (
   </Provider>
 );
 
-render(application, document.getElementById('root'));
+store.firebaseAuthIsReady.then(() => { // render application when user auth checking is end
+  render(application(store), document.getElementById('root'));
+});

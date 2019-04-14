@@ -12,13 +12,13 @@ export default function storeCreator() {
     createStore(
       combineReducers({
         ...reducers,
-        firebaseReducer,
-        firestoreReducer
+        firebase: firebaseReducer,
+        firestore: firestoreReducer
       }),
       compose(
         applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-        reactReduxFirebase(firebaseInit()),
-        reduxFirestore(FIREBASE_CONFIG)
+        reduxFirestore(FIREBASE_CONFIG),
+        reactReduxFirebase(firebaseInit(), { attachAuthIsReady: true })
       )
     )
   );

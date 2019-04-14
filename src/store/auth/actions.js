@@ -1,5 +1,6 @@
 import * as types from './action-types';
 import FBRequest from './firebase-requests';
+import { requestImage } from 'utils';
 
 function register(userRegInfo) {
   return async(dispatch, getState, { getFirebase }) => {
@@ -9,13 +10,26 @@ function register(userRegInfo) {
         status: true
       });
       
-      const { userEmail, userPassword } = userRegInfo;
-      const data = await FBRequest(
-        getFirebase,
-        'register',
-        userEmail, userPassword
-      );
+      const {
+        userEmail,
+        userPassword,
+        userName,
+        userFirstName,
+        userLastName
+      } = userRegInfo;
       
+      await FBRequest(getFirebase, 'register', userEmail, userPassword);
+      await FBRequest(getFirebase, 'updateProfile', {
+        displayName: `${ userName }:${ userFirstName }-${ userLastName }`,
+        photoURL: null
+      });
+  
+      // const data = await requestImage.get('', { // TODO remove when remember
+      //   params: {
+      //     method: 'newest',
+      //     page: 10
+      //   }
+      // });
     } catch (e) {
       console.error('action: register', e);
     } finally {
