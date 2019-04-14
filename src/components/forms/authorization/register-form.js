@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { authorizationErrors } from '../../../constants';
 
 import AppButton from 'components/common/app-button';
@@ -168,5 +169,6 @@ const initialFormFields = {
 
 export default withFormValidation(
   initialFormFields.data,
-  initialFormFields.errors
+  initialFormFields.errors,
+  'register'
 )(RegisterForm);
