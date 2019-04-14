@@ -24,6 +24,7 @@
     "react-scripts": "2.1.8",
     "react-transition-group": "^2.7.1",
     "redux": "^4.0.1",
+    "redux-firestore": "^0.7.3",
     "redux-thunk": "^2.3.0",
     "seamless-immutable": "^7.1.4",
     "typeface-ubuntu": "^0.0.65"
