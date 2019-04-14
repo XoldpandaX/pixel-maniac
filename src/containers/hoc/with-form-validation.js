@@ -94,9 +94,12 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
         .every((fieldValue) => fieldValue.length);
 
       if (isAllDataFilled && !!hasDataErrors) {
+        const { dispatch } = this.props;
+        const { userEmail, userPassword } = data;
+        
         return submitType === 'register'
-          ? this.props.dispatch(authActions.register(data))
-          : console.info(data);
+          ? dispatch(authActions.register(data))
+          : dispatch(authActions.login({ email: userEmail, password: userPassword }))
       }
       
       showNotification({
@@ -108,11 +111,19 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
     };
 
     render () {
+      const {
+        isRegisterLoading,
+        isLoginLoading,
+        ...props
+      } = this.props;
+      
+      const loadingStatus = submitType === 'register' ? isRegisterLoading : isLoginLoading;
+  
       return (
         <WrappedComponent
-          { ...this.props }
+          { ...props }
           { ...this.state }
-          isLoading={ this.props.isAuthLoading }
+          isLoading={ loadingStatus }
           handleInput={ this.handleInput }
           handleSubmit={ this.handleSubmit }
           handleBlur={ this.handleBlur }
@@ -121,7 +132,10 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
     }
   }
   
-  return connect(authSelectors.getLoadingStatus)(WrappedForm);
+  return connect((state) =>({
+    isRegisterLoading: authSelectors.getRegisterLoadingStatus(state),
+    isLoginLoading: authSelectors.getLoginLoadingStatus(state)
+  }))(WrappedForm);
 };
 
 

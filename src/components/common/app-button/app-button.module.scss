@@ -5,6 +5,7 @@
   @extend %common-text-shadow;
   position: relative;
   min-height: rem(35px);
+  min-width: rem(112px);
   padding: rem(10px) rem(40px);
   border-radius: rem(5px);
   font-family: Ubuntu, 'Open Sans', sans-serif;
