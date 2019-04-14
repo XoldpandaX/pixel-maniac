@@ -151,7 +151,7 @@ RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-const initialFormFields = { // TODO after test set empty strings
+const initialFormFields = {
   data: {
     userName: '',
     userEmail: '',
