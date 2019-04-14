@@ -27,7 +27,8 @@
     "redux-firestore": "^0.7.3",
     "redux-thunk": "^2.3.0",
     "seamless-immutable": "^7.1.4",
-    "typeface-ubuntu": "^0.0.65"
+    "typeface-ubuntu": "^0.0.65",
+    "uid": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
