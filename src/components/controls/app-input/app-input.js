@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import uid from 'uid';
 
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index'
@@ -36,14 +37,16 @@ const AppInput = (props) => {
     />
   );
   
+  const uniqId = `id-${ name }${ uid('3') }`;
+  
   return (
     <label
       className={ labelClass }
-      htmlFor={ `id-${ name }` }
+      htmlFor={ uniqId }
     >
       <span className={ labelInnerClass }>{ labelIcon || labelText }</span>
       <input
-        id={ `id-${ name }` }
+        id={ uniqId }
         className={ classNames }
         name={ name }
         type={ type }
