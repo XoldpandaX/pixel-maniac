@@ -3,13 +3,17 @@ import { Route, Switch } from 'react-router-dom';
 
 import HomePage from 'components/pages/home';
 
-import './app.css';
+import styles from './app.module.scss';
 
 class App extends Component {
   
   render () {
+    const {
+      app
+    } = styles;
+    
     return (
-      <div className='app'>
+      <div className={ app }>
         <main style={ { padding: '50px 50px 2px' } }>
           <header>this is a header</header>
           <Switch>
