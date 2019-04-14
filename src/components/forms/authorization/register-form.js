@@ -98,7 +98,6 @@ const RegisterForm = (props) => {
             name='userFirstName'
             value={ userFirstName }
             placeholder='First name'
-            errorText='mfcku'
             icon='id-card'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
@@ -110,7 +109,6 @@ const RegisterForm = (props) => {
             name='userLastName'
             value={ userLastName }
             placeholder='Last name'
-            errorText='mfcku'
             icon='id-card'
             onInputChange={ handleInput }
             onHandleBlur={ handleBlur }
