@@ -8,12 +8,14 @@ const IMAGE_SERVER_ENDPOINT = `${ DISABLE_CORS_URI }${ IMAGE_SERVER_URI }`;
 const NOTIFICATION_TIMEOUT = 4000;
 
 // firebase
-const API_KEY = 'AIzaSyAVHTIAJIUFreezVJTWZRLBFu-DDMckcgs';
-const AUTH_DOMAIN = 'pixel-maniac.firebaseapp.com';
-const DATABASE_URL = 'https://pixel-maniac.firebaseio.com';
-const PROJECT_ID = 'pixel-maniac';
-const STORAGE_BUCKET = 'pixel-maniac.appspot.com';
-const MESSAGING_SENDER_ID = '758836201272';
+const FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyAVHTIAJIUFreezVJTWZRLBFu-DDMckcgs',
+  authDomain: 'pixel-maniac.firebaseapp.com',
+  databaseURL: 'https://pixel-maniac.firebaseio.com',
+  projectId: 'pixel-maniac',
+  storageBucket: 'pixel-maniac.appspot.com',
+  messagingSenderId: '758836201272'
+};
 
 export {
   NOTIFICATION_TIMEOUT,
@@ -21,10 +23,5 @@ export {
   DISABLE_CORS_URI,
   IMAGE_SERVER_URI,
   IMAGE_SERVER_ENDPOINT,
-  API_KEY,
-  AUTH_DOMAIN,
-  DATABASE_URL,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-  MESSAGING_SENDER_ID
+  FIREBASE_CONFIG
 }
