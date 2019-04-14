@@ -5,7 +5,7 @@ function register(userRegInfo) {
   return async(dispatch, getState, { getFirebase }) => {
     try {
       dispatch({
-        type: types.CHANGE_LOADING_STATUS,
+        type: types.CHANGE_REGISTER_LOADING_STATUS,
         status: true
       });
       
@@ -20,13 +20,40 @@ function register(userRegInfo) {
       console.error('action: register', e);
     } finally {
       dispatch({
-        type: types.CHANGE_LOADING_STATUS,
+        type: types.CHANGE_REGISTER_LOADING_STATUS,
         status: false
       });
     }
   };
 }
 
+function login({ email, password }) {
+  return async(dispatch, getState, { getFirebase }) => {
+    try {
+      dispatch({
+        type: types.CHANGE_LOGIN_LOADING_STATUS,
+        status: true
+      });
+      
+      await FBRequest(
+        getFirebase,
+        'signIn',
+        email,
+        password
+      );
+      
+    } catch (e) {
+      console.error('action: login', e);
+    } finally {
+      dispatch({
+        type: types.CHANGE_LOGIN_LOADING_STATUS,
+        status: false
+      });
+    }
+  }
+}
+
 export {
-  register
+  register,
+  login
 };

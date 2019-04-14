@@ -1,3 +1,3 @@
-export const getLoadingStatus = ({ auth }) => ({
-  isAuthLoading: auth.additional.isLoading
-});
+export const getRegisterLoadingStatus = ({ auth }) => auth.additional.isRegisterLoading;
+export const getLoginLoadingStatus = ({ auth }) => auth.additional.isLoginLoading;
+
