@@ -152,12 +152,12 @@ RegisterForm.propTypes = {
 
 const initialFormFields = {
   data: {
-    userName: '',
-    userEmail: '',
-    userPassword: '',
-    userRepeatPassword: '',
-    userFirstName: '',
-    userLastName: ''
+    userName: 'oldpanda',
+    userEmail: 'nn@nn.nn',
+    userPassword: '123456q.',
+    userRepeatPassword: '123456q.',
+    userFirstName: 'Denis',
+    userLastName: 'Shakin'
   },
   errors: {
     userName: false,
