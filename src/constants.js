@@ -10,7 +10,7 @@ const routes = {
 
 const authorizationErrors = {
   username: 'Min - 4 symbols, no num, only latin abc',
-  email: 'Email is invalid or already taken',
+  email: 'Email is invalid',
   password: 'Pass at least 6 characters including number, one spec symbol',
   passwordRepeat: 'Passwords are not equal',
 };
