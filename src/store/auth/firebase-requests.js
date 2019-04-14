@@ -5,13 +5,18 @@ export default async function FBRequest(firebaseInstance, requestType, ...params
     register: 'createUserWithEmailAndPassword',
     signIn: 'signInWithEmailAndPassword',
     signOut: 'signOut',
+    updateProfile: 'updateProfile'
   };
   
   const currentRequest = authRequests[requestType];
   
   try {
     if (currentRequest) {
-      return await firebaseInstance().auth()[currentRequest](...params);
+      const baseRequestPart = firebaseInstance().auth();
+      
+      return currentRequest !== authRequests['updateProfile']
+        ? await baseRequestPart[currentRequest](...params)
+        : await baseRequestPart.currentUser[currentRequest]({ ...params[0] });
     }
     
     console.error(
@@ -26,7 +31,7 @@ export default async function FBRequest(firebaseInstance, requestType, ...params
       message: e.message
     });
     
-    throw new Error(e)
+    throw new Error(` at ${ requestType } method: ${ e }`)
   }
 };
 
