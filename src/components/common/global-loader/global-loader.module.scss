@@ -29,14 +29,14 @@
     }
 
     @each $num, $animDelay, $top, $left in
-            (1, -0.036s, rem(50px), rem(50px)),
-            (2, -0.072s, rem(54px), rem(45px)),
-            (3, -0.108s, rem(57px), rem(39px)),
-            (4, -0.144s, rem(58px), rem(32px)),
-            (5, -0.18s, rem(57px), rem(25px)),
-            (6, -0.216s, rem(54px), rem(19px)),
-            (7, -0.252s, rem(50px), rem(14px)),
-            (8, -0.288s, rem(45px), rem(10px)) {
+            (1, -.036s, rem(50px), rem(50px)),
+            (2, -.072s, rem(54px), rem(45px)),
+            (3, -.108s, rem(57px), rem(39px)),
+            (4, -.144s, rem(58px), rem(32px)),
+            (5, -.18s, rem(57px), rem(25px)),
+            (6, -.216s, rem(54px), rem(19px)),
+            (7, -.252s, rem(50px), rem(14px)),
+            (8, -.288s, rem(45px), rem(10px)) {
       &:nth-child(#{ $num }) {
         animation-delay: $animDelay;
 
