@@ -1,0 +1,59 @@
+@import 'src/styles/functions/index';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.ldsRoller {
+  display: inline-block;
+  position: relative;
+  width: rem(64px);
+  height: rem(64px);
+
+  div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: rem(32px) rem(32px);
+
+    &:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      width: rem(6px);
+      height: rem(6px);
+      border-radius: 50%;
+      background: #fff;
+      margin: rem(-3px) 0 0 rem(-3px);
+    }
+
+    @each $num, $animDelay, $top, $left in
+            (1, -0.036s, rem(50px), rem(50px)),
+            (2, -0.072s, rem(54px), rem(45px)),
+            (3, -0.108s, rem(57px), rem(39px)),
+            (4, -0.144s, rem(58px), rem(32px)),
+            (5, -0.18s, rem(57px), rem(25px)),
+            (6, -0.216s, rem(54px), rem(19px)),
+            (7, -0.252s, rem(50px), rem(14px)),
+            (8, -0.288s, rem(45px), rem(10px)) {
+      &:nth-child(#{ $num }) {
+        animation-delay: $animDelay;
+
+        &:after {
+          top: $top;
+          left: $left;
+        }
+      }
+    }
+  }
+}
+
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
