@@ -23,18 +23,7 @@ class App extends Component {
     const { isAppRender } = this.state;
     const { app } = styles;
     
-    const loader = !isAppRender &&
-      <CSSTransition
-        classNames='a-slide'
-        in={ !isAppRender }
-        timeout={{
-          enter: 400,
-          exit: 250
-        }}
-        unmountOnExit
-      >
-        <GlobalLoader />
-      </CSSTransition>;
+    const loader = !isAppRender && <GlobalLoader />;
   
     return (
       <div className={app}>
