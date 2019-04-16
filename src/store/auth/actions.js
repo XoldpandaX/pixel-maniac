@@ -64,10 +64,23 @@ function login({ email, password }) {
         status: false
       });
     }
-  }
+  };
+}
+
+function logout() {
+  return async(dispatch, getState, { getFirebase}) => {
+    try {
+      await FBRequest(getFirebase, 'signOut');
+    } catch (e) {
+      console.error('action: logout', e);
+    } finally {
+      console.info('logout');
+    }
+  };
 }
 
 export {
   register,
-  login
+  login,
+  logout
 };
