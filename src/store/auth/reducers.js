@@ -1,5 +1,6 @@
-import * as types from './action-types';
 import Immutable from 'seamless-immutable';
+
+import * as types from './action-types';
 
 const initialState = Immutable({
   user: null,
@@ -9,7 +10,7 @@ const initialState = Immutable({
   }
 });
 
-export default function reduce (state = initialState, action = {}) {
+export default function reduce(state = initialState, action = {}) {
   switch (action.type) {
     case types.CHANGE_REGISTER_LOADING_STATUS:
       return state.merge({

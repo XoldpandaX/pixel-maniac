@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserData } from 'store/auth/selectors';
 import { logout } from 'store/auth/actions';
-import { fetchHighestRatedImageCollection } from 'store/images/actions';
 
 import AuthorizationFormContainer from 'components/template-containers/authorization-form';
 import { LoginForm, RegisterForm } from 'components/forms/authorization';
@@ -10,10 +9,6 @@ import { LoginForm, RegisterForm } from 'components/forms/authorization';
 import styles from './home.module.scss';
 
 class HomePage extends Component {
-  componentDidMount() {
-    console.info(this.props.user);
-  }
-  
   render() {
     const {
       homePage,
@@ -49,7 +44,6 @@ class HomePage extends Component {
             <button onClick={ () => this.props.dispatch(logout()) }>logout</button>
           )
         }
-        <button onClick={ () => this.props.dispatch(fetchHighestRatedImageCollection()) }>TEST</button>
       </div>
     );
   }
