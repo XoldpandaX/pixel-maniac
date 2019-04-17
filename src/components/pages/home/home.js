@@ -4,6 +4,7 @@ import { getUserData } from 'store/auth/selectors';
 import { logout } from 'store/auth/actions';
 
 import AuthorizationFormContainer from 'components/template-containers/authorization-form';
+import FlipCard from 'components/common/flip-card';
 import { LoginForm, RegisterForm } from 'components/forms/authorization';
 
 import styles from './home.module.scss';
@@ -16,7 +17,9 @@ class HomePage extends Component {
       widgetCol
     } = styles;
     
-    const authorizationForms = !this.props.user && (
+    const { user, dispatch } = this.props;
+    
+    const authorizationForms = !user && (
       <section className={ authorizationCol }>
         <AuthorizationFormContainer
           type='login'
@@ -36,12 +39,14 @@ class HomePage extends Component {
     return (
       <div className={ homePage }>
         <section className={ widgetCol }>
-          <p>WIDGET SIDE</p>
+          <FlipCard/>
         </section>
         { authorizationForms }
         {
           this.props.user && (
-            <button onClick={ () => this.props.dispatch(logout()) }>logout</button>
+            <button onClick={ () => dispatch(logout()) }>
+              logout
+            </button>
           )
         }
       </div>
