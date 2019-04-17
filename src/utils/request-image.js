@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { showNotification } from 'utils';
 
+import { showNotification, objKeysToSnakeCase } from 'utils';
 import { IMAGE_SERVER_ENDPOINT, IMAGE_SERVER_KEY } from 'config';
 
 const requestImage = axios.create({
@@ -29,6 +29,13 @@ requestImage.interceptors.response.use((response) => {
     type: 'error'
   });
   
+  return Promise.reject(error);
+});
+
+requestImage.interceptors.request.use((config) => ({
+  ...config,
+  params: objKeysToSnakeCase(config.params)
+}), (error) => {
   return Promise.reject(error);
 });
 
