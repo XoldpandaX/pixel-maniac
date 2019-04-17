@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchHighestRatedImageCollection } from 'store/images/actions';
 import { CSSTransition } from 'react-transition-group';
 
 import GlobalLoader from 'components/common/global-loader';
@@ -10,10 +12,12 @@ import styles from './app.module.scss';
 class App extends Component {
   state = {
     isAppRender: false,
-    timeout: 2000
+    timeout: 1500
   };
   
-  componentDidMount() {
+  async componentDidMount() {
+    await this.props.dispatch(fetchHighestRatedImageCollection());
+    
     setTimeout(() => {
       this.setState({ isAppRender: true })
     }, this.state.timeout);
@@ -53,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(App);
