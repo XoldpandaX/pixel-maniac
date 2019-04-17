@@ -104,7 +104,7 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
           : dispatch(authActions.login({ email: userEmail, password: userPassword }))
       }
       
-      if (hasOneFilledField) {
+      if (hasOneFilledField && !isAllDataFilled) {
         showNotification({
           title: 'Form error',
           type: 'error',
@@ -141,8 +141,6 @@ const withFormValidation = (initialFormFields, requiredFields, submitType) =>
     isLoginLoading: authSelectors.getLoginLoadingStatus(state)
   }))(WrappedForm);
 };
-
-
 
 export default withFormValidation;
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUserData } from 'store/auth/selectors';
 import { logout } from 'store/auth/actions';
+import { fetchHighestRatedImageCollection } from 'store/images/actions';
 
 import AuthorizationFormContainer from 'components/template-containers/authorization-form';
 import { LoginForm, RegisterForm } from 'components/forms/authorization';
@@ -48,6 +49,7 @@ class HomePage extends Component {
             <button onClick={ () => this.props.dispatch(logout()) }>logout</button>
           )
         }
+        <button onClick={ () => this.props.dispatch(fetchHighestRatedImageCollection()) }>TEST</button>
       </div>
     );
   }
