@@ -7,15 +7,12 @@ import { highestRatedImageMapper } from './mappers';
 function fetchHighestRatedImageCollection() {
   return async (dispatch) => {
     try {
-      const rand1 = random(1, 5);
-      const rand2 = random(6, 10);
-  
       const [
         { data: { wallpapers: images1 } },
         { data: { wallpapers: images2 } },
       ] = await Promise.all([
-        getHighestRatedImageCollection({ page: rand1 }),
-        getHighestRatedImageCollection({ page: rand2 })
+        getHighestRatedImageCollection({ page: random(1, 5) }),
+        getHighestRatedImageCollection({ page: random(6, 10) })
       ]);
   
       dispatch({

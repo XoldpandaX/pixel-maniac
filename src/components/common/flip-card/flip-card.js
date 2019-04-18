@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './flip-card.scss';
+import styles from './flip-card.module.scss';
 
 const FlipCard = (props) => {
+  const [isFlip, changeFlipStatus] = useState(false);
+  
   const {
     container,
+    containerVertical,
     flipper,
+    flipperVertical,
     front,
-    back
-  } = props;
+    back,
+    backHorizontal,
+    backVertical,
+    flipHorizontalRight,
+    flipVertical
+  } = styles;
   
   return (
-    <div className='flip-container'>
-      <div className='flipper flr'>
-        <div className='front'>
+    <div className={ `${ container } ${ containerVertical }` }>
+      <div className={ `${ flipper } ${ flipperVertical } ${ flipVertical }` }>
+        <div className={ front }>
           <img
             src="https://images7.alphacoders.com/548/thumb-548306.jpg"
             alt="widget image"
           />
         </div>
-        <div className='back'>
+        <div className={ `${ back } ${ backVertical }` }>
           <img
             src="https://images5.alphacoders.com/697/thumb-697989.jpg"
             alt="widget image"

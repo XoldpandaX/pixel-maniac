@@ -1,0 +1,64 @@
+%common-styles {
+  width: 320px;
+}
+
+/* hide back of pane during swap */
+%front-back-styles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.container {
+  @extend %common-styles;
+  perspective: 1000px;
+
+  &Vertical {
+    position: relative;
+  }
+}
+
+/* flip speed */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+
+  &Vertical {
+    transform-origin: 100% 90.595px;
+  }
+}
+
+/* front pane, placed above back */
+.front {
+  @extend %common-styles;
+  @extend %front-back-styles;
+  z-index: 2;
+
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  @extend %common-styles;
+  @extend %front-back-styles;
+
+  &Horizontal {
+    transform: rotateY(180deg);
+  }
+
+  &Vertical {
+    transform: rotateX(180deg);
+  }
+}
+
+/* add to flipper style */
+.flipHorizontalRight {
+  transform: rotateY(180deg);
+}
+
+.flipVertical {
+  transform: rotateX(-180deg);
+}
