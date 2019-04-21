@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 import { showNotification, objKeysToSnakeCase } from 'utils';
-import { IMAGE_SERVER_ENDPOINT, IMAGE_SERVER_KEY } from 'config';
+import { IMAGE_SERVER_ENDPOINT } from 'config';
 
 const requestImage = axios.create({
   baseURL: IMAGE_SERVER_ENDPOINT,
   params: {
-    auth: IMAGE_SERVER_KEY
+    auth: process.env.REACT_APP_IMAGE_SERVER_KEY
   }
 });
 

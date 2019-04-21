@@ -17,7 +17,10 @@ export default function storeCreator() {
       }),
       compose(
         applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-        reduxFirestore(FIREBASE_CONFIG),
+        reduxFirestore({
+          ...FIREBASE_CONFIG,
+          apiKey: process.env.REACT_APP_FIREBASE_KEY
+        }),
         reactReduxFirebase(firebaseInit(), { attachAuthIsReady: true })
       )
     )
