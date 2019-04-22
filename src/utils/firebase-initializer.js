@@ -1,10 +1,12 @@
 import firebase from 'firebase';
 
-import { FIREBASE_CONFIG } from 'config';
-
 export default function initFirebase() {
   return firebase.initializeApp({
-    ...FIREBASE_CONFIG,
-    apiKey: process.env.REACT_APP_FIREBASE_KEY
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    databaseURL: process.env.DATABASE_URL,
+    projectId: process.env.PROJECT_ID,
+    storageBucket: process.env.STORAGE_BUCKET,
+    messagingSenderId: process.env.MESSAGING_SENDER_ID
   });
 }
