@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import Loader from 'components/common/loader';
 
 import styles from './app-button.module.scss';
+let cx = classNames.bind(styles);
 
 const AppButton = (props) => {
   const {
@@ -13,23 +15,18 @@ const AppButton = (props) => {
     clickHandler
   } = props;
   
-  const {
-    btn,
-    primary,
-    disabled,
-    wide
-  } = styles;
+  const btnClasses = cx({
+    btn: true,
+    primary: true,
+    disabled: isLoading,
+    wide: isWide
+  });
   
-  const classNames = `
-    ${ btn } ${ isLoading && disabled }
-    ${ primary }
-    ${ isWide && wide }
-  `;
   const content = isLoading ? <Loader size='m' /> : text;
   
   return (
     <button
-      className={ classNames }
+      className={ btnClasses }
       disabled={ isLoading }
       onClick={ clickHandler }
     >

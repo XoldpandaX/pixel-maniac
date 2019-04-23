@@ -1,6 +1,6 @@
 import React from 'react';
-import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import styles from './flip-card.module.scss';
 let cx = classNames.bind(styles);

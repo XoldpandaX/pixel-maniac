@@ -1,7 +1,9 @@
 import React, { createElement, memo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import styles from './app-title.module.scss';
+let cx = classNames.bind(styles);
 
 const AppTitle = (props) => {
   const {
@@ -10,11 +12,12 @@ const AppTitle = (props) => {
     classNames,
     color,
     hasTextShadow
-  }= props;
+  } = props;
   
-  const { appTitle, textShadow } = styles;
-  
-  const textShadowClass = hasTextShadow ? textShadow : null;
+  const titleClasses = cx(classNames, {
+    appTitle: true,
+    textShadow: hasTextShadow
+  });
   
   const availableLevels = {
     h1: 'h1',
@@ -25,7 +28,7 @@ const AppTitle = (props) => {
   return createElement(
     `${ availableLevels[level] }`,
     {
-      className: `${ appTitle } ${ textShadowClass } ${ classNames }`,
+      className: titleClasses,
       style: { color },
     },
     children
