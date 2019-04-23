@@ -3,36 +3,44 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 
 import styles from './flip-card.module.scss';
-
 let cx = classNames.bind(styles);
 
 const FlipCard = (props) => {
-  const [isFlip, changeFlipStatus] = useState(false);
-  
   const {
-    container,
-    containerVertical,
-    flipper,
-    flipperVertical,
-    front,
-    back,
-    backHorizontal,
-    backVertical,
-    flipHorizontalRight,
-    flipVertical
-  } = styles;
+    hasVerticalFlip,
+    isFlip
+  } = props;
   
+  const { front } = styles;
+  
+  const containerClasses = cx({
+    container: true,
+    containerVertical: hasVerticalFlip
+  });
+  
+  const flipperClasses = cx({
+    flipper: true,
+    flipperVertical: hasVerticalFlip,
+    flipVertical: hasVerticalFlip && isFlip,
+    flipHorizontal: !hasVerticalFlip && isFlip
+  });
+  
+  const backClasses = cx({
+    back: true,
+    backHorizontal: !hasVerticalFlip,
+    backVertical: hasVerticalFlip
+  });
   
   return (
-    <div className={ `${ container } ${ containerVertical }` }>
-      <div className={ `${ flipper } ${ flipperVertical } ${ flipVertical }` }>
+    <div className={ containerClasses }>
+      <div className={ flipperClasses }>
         <div className={ front }>
           <img
             src="https://images7.alphacoders.com/548/thumb-548306.jpg"
             alt="widget image"
           />
         </div>
-        <div className={ `${ back } ${ backVertical }` }>
+        <div className={ backClasses }>
           <img
             src="https://images5.alphacoders.com/697/thumb-697989.jpg"
             alt="widget image"
@@ -43,8 +51,14 @@ const FlipCard = (props) => {
   );
 };
 
-FlipCard.propTypes = {
+FlipCard.defaultProps = {
+  hasVerticalFlip: false,
+  isFlip: false
+};
 
+FlipCard.propTypes = {
+  hasVerticalFlip: PropTypes.bool,
+  isFlip: PropTypes.bool
 };
 
 export default FlipCard;
