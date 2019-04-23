@@ -4,7 +4,7 @@ import { getUserData } from 'store/auth/selectors';
 import { logout } from 'store/auth/actions';
 
 import AuthorizationFormContainer from 'components/template-containers/authorization-form';
-import FlipCard from 'components/common/flip-card';
+import FlipCardWidget from 'components/widgets/flip-card-widget';
 import { LoginForm, RegisterForm } from 'components/forms/authorization';
 
 import styles from './home.module.scss';
@@ -39,7 +39,7 @@ class HomePage extends Component {
     return (
       <div className={ homePage }>
         <section className={ widgetCol }>
-          <FlipCard isFlip={ true }/>
+          <FlipCardWidget />
         </section>
         { authorizationForms }
         {

@@ -8,7 +8,9 @@ let cx = classNames.bind(styles);
 const FlipCard = (props) => {
   const {
     hasVerticalFlip,
-    isFlip
+    isFlip,
+    frontImage,
+    backImage
   } = props;
   
   const { front } = styles;
@@ -36,13 +38,13 @@ const FlipCard = (props) => {
       <div className={ flipperClasses }>
         <div className={ front }>
           <img
-            src="https://images7.alphacoders.com/548/thumb-548306.jpg"
+            src={ frontImage }
             alt="widget image"
           />
         </div>
         <div className={ backClasses }>
           <img
-            src="https://images5.alphacoders.com/697/thumb-697989.jpg"
+            src={ backImage }
             alt="widget image"
           />
         </div>
@@ -58,7 +60,9 @@ FlipCard.defaultProps = {
 
 FlipCard.propTypes = {
   hasVerticalFlip: PropTypes.bool,
-  isFlip: PropTypes.bool
+  isFlip: PropTypes.bool,
+  frontImage: PropTypes.string.isRequired,
+  backImage: PropTypes.string.isRequired
 };
 
 export default FlipCard;
