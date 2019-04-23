@@ -39,7 +39,7 @@ class HomePage extends Component {
     return (
       <div className={ homePage }>
         <section className={ widgetCol }>
-          <FlipCard/>
+          <FlipCard isFlip={ true }/>
         </section>
         { authorizationForms }
         {
