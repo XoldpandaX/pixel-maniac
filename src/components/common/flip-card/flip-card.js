@@ -10,7 +10,10 @@ const FlipCard = (props) => {
     hasVerticalFlip,
     isFlip,
     frontImage,
-    backImage
+    backImage,
+    id,
+    width,
+    height
   } = props;
   
   const { front } = styles;
@@ -39,13 +42,17 @@ const FlipCard = (props) => {
         <div className={ front }>
           <img
             src={ frontImage }
-            alt="widget image"
+            alt={ `widget ${ id } `}
+            width={ width }
+            height={ height }
           />
         </div>
         <div className={ backClasses }>
           <img
             src={ backImage }
-            alt="widget image"
+            alt={ `widget ${ id } `}
+            width={ width }
+            height={ height }
           />
         </div>
       </div>

@@ -1,5 +1,6 @@
 %common-styles {
-  width: 320px;
+  width: 255px;
+  height: 150px;
 }
 
 /* hide back of pane during swap */
@@ -8,6 +9,10 @@
   top: 0;
   left: 0;
   backface-visibility: hidden;
+
+  img {
+    object-fit: cover;
+  }
 }
 
 .container {
@@ -50,6 +55,7 @@
   }
 
   &Vertical {
+    top: 31px;
     transform: rotateX(180deg);
   }
 }
