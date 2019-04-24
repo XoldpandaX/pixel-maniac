@@ -11,8 +11,8 @@ function fetchHighestRatedImageCollection() {
         { data: { wallpapers: images1 } },
         { data: { wallpapers: images2 } },
       ] = await Promise.all([
-        getHighestRatedImageCollection({ page: random(1, 5) }),
-        getHighestRatedImageCollection({ page: random(6, 10) })
+        getHighestRatedImageCollection({ page: random(1, 50) }),
+        getHighestRatedImageCollection({ page: random(51, 100) })
       ]);
   
       dispatch({

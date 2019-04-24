@@ -3,7 +3,12 @@ import Immutable from 'seamless-immutable';
 import * as types from './action-types';
 
 const initialState = Immutable({
-  highestRatedImages: [],
+  highestRatedImages: {
+    flipSlider: [],
+    classicSlider: [],
+    singleVerticalSlider: [],
+    singleHorizontalSlider: []
+  },
   additional: {
     isImagesLoading: false
   }
