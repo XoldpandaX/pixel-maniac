@@ -12,7 +12,7 @@ import styles from './app.module.scss';
 class App extends Component {
   state = {
     isAppRender: false,
-    timeout: 1500
+    timeout: 1000
   };
   
   async componentDidMount() {
@@ -31,6 +31,7 @@ class App extends Component {
   
     return (
       <div className={app}>
+        { loader }
         <CSSTransition
           classNames='a-slide'
           in={ isAppRender }
@@ -51,7 +52,6 @@ class App extends Component {
             </div>
           </main>
         </CSSTransition>
-        { loader }
       </div>
     );
   }
