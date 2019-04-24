@@ -6,11 +6,16 @@ import FlipCard from 'components/common/flip-card';
 import styles from './flip-card-widget.module.scss';
 
 const FlipCardWidget = ({ images }) => {
+  const { flipCardWidget, cardEl } = styles;
+  
   return (
-    <div style={{display: 'flex' }}>
+    <div className={ flipCardWidget }>
       {
         images.map(({ id, front, back, isFlip, hasVerticalFlip }) => (
-          <div key={ id }>
+          <div
+            className={ cardEl }
+            key={ id }
+          >
             <FlipCard
               id={ id }
               frontImage={ front.urlThumb }
@@ -27,6 +32,8 @@ const FlipCardWidget = ({ images }) => {
   );
 };
 
-FlipCardWidget.propTypes = {};
+FlipCardWidget.propTypes = {
+  images: PropTypes.array.isRequired
+};
 
 export default FlipCardWidget;
