@@ -22,7 +22,7 @@ const FlipCardWidget = ({ images }) => {
               backImage={ back.urlThumb }
               isFlip={ isFlip }
               hasVerticalFlip={ hasVerticalFlip }
-              width='245px'
+              width='240px'
               height='163px'
             />
           </div>

@@ -4,14 +4,16 @@ import { connect } from 'react-redux';
 import { getTopRatedImages } from 'store/images/selectors';
 import random from 'lodash/random';
 
-import FlipCardWidget from 'components/widgets/flip-card-widget';
+import FlipCardWidget from 'containers/image-widget/childs/flip-card-widget';
 
 import styles from './image-widget.module.scss';
+const { imageWidget } = styles;
 
 class ImageWidget extends Component {
   state = {
     counter: 0,
     row: null,
+    timeout: 1000,
     images: []
   };
   
@@ -29,8 +31,8 @@ class ImageWidget extends Component {
         };
       });
       
-      this.timerId = setTimeout(tick.bind(this), 5000);
-    }.bind(this), 5000);
+      this.timerId = setTimeout(tick.bind(this), this.state.timeout);
+    }.bind(this), this.state.timeout);
   }
   
   componentWillUnmount() {
@@ -51,7 +53,7 @@ class ImageWidget extends Component {
     } = this.props;
     
     return (
-      <div style={{width: '100%' }}>
+      <div className={ imageWidget } style={{width: '100%' }}>
         <FlipCardWidget images={ images } />
       </div>
     );
