@@ -53,7 +53,7 @@ class ImageWidget extends Component {
     } = this.props;
     
     return (
-      <div className={ imageWidget } style={{width: '100%' }}>
+      <div className={ imageWidget } style={{ width: '100%' }}>
         <FlipCardWidget images={ images } />
       </div>
     );

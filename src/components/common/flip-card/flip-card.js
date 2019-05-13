@@ -13,7 +13,8 @@ const FlipCard = (props) => {
     backImage,
     id,
     width,
-    height
+    height,
+    onImageLoad
   } = props;
   
   const { front } = styles;
@@ -45,6 +46,7 @@ const FlipCard = (props) => {
             alt={ `widget ${ id } `}
             width={ width }
             height={ height }
+            onLoad={ onImageLoad }
           />
         </div>
         <div className={ backClasses }>
@@ -53,6 +55,7 @@ const FlipCard = (props) => {
             alt={ `widget ${ id } `}
             width={ width }
             height={ height }
+            onLoad={ onImageLoad }
           />
         </div>
       </div>
