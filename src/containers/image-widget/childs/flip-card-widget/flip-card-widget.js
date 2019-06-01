@@ -63,8 +63,6 @@ class FlipCardWidget extends Component {
                 backImage={ back.urlThumb }
                 isFlip={ isFlip }
                 hasVerticalFlip={ hasVerticalFlip }
-                width='240px'
-                height='163px'
                 onImageLoad={ this.updateNumOfLoadedImages }
               />
             </div>

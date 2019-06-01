@@ -11,7 +11,7 @@ import styles from './image-widget.module.scss';
 class ImageWidget extends Component {
   state = {
     counter: 0,
-    timeout: 5000,
+    timeout: 4000,
     availableSliders: ['flip', 'tape']
   };
   

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import AppImage from 'components/common/app-image';
+
 import styles from './tape-slider-widget.module.scss';
 
 class TapeSliderWidget extends Component {
@@ -56,8 +58,8 @@ class TapeSliderWidget extends Component {
         key={ id }
         style={{ width: `${slideWidth}px` }}
       >
-        <img
-          className='image-for-widget widget-border'
+        <AppImage
+          classNames={['image-for-widget','widget-border']}
           src={ urlThumb }
           alt='slider element'
         />

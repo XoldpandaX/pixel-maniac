@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 
+import AppImage from 'components/common/app-image';
+
 import styles from './flip-card.module.scss';
 let cx = classNames.bind(styles);
 
@@ -41,8 +43,8 @@ const FlipCard = (props) => {
     <div className={ containerClasses }>
       <div className={ flipperClasses }>
         <div className={ front }>
-          <img
-            className='image-for-widget'
+          <AppImage
+            classNames={['image-for-widget']}
             src={ frontImage }
             alt={ `widget ${ id } `}
             width={ width }
@@ -51,8 +53,8 @@ const FlipCard = (props) => {
           />
         </div>
         <div className={ backClasses }>
-          <img
-            className='image-for-widget'
+          <AppImage
+            classNames={['image-for-widget']}
             src={ backImage }
             alt={ `widget ${ id } `}
             width={ width }
