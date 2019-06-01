@@ -42,6 +42,7 @@ const FlipCard = (props) => {
       <div className={ flipperClasses }>
         <div className={ front }>
           <img
+            className='image-for-widget'
             src={ frontImage }
             alt={ `widget ${ id } `}
             width={ width }
@@ -51,6 +52,7 @@ const FlipCard = (props) => {
         </div>
         <div className={ backClasses }>
           <img
+            className='image-for-widget'
             src={ backImage }
             alt={ `widget ${ id } `}
             width={ width }

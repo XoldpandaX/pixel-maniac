@@ -11,8 +11,7 @@ import styles from './app.module.scss';
 
 class App extends Component {
   state = {
-    isAppRender: false,
-    timeout: 1 // TODO return to 1000
+    isAppRender: false
   };
   
   async componentDidMount() {

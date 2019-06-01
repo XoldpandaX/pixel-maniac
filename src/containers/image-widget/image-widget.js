@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getTopRatedImages } from 'store/images/selectors';
 import random from 'lodash/random';
@@ -8,31 +7,27 @@ import FlipCardWidget from 'containers/image-widget/childs/flip-card-widget';
 import TapeSliderWidget from 'containers/image-widget/childs/tape-slider-widget';
 
 import styles from './image-widget.module.scss';
-const { imageWidget } = styles;
 
 class ImageWidget extends Component {
   state = {
     counter: 0,
-    row: null,
-    timeout: 1000,
-    images: []
+    timeout: 5000,
+    availableSliders: ['flip', 'tape']
   };
   
+  tapeSliderInst = React.createRef();
+  flipSliderInst = React.createRef();
+  
   async componentDidMount() {
-    await this.setState({ images: this.props.flipSliderImages });
-    
     this.timerId = setTimeout(function tick() {
-      const rand = random(0, this.state.images.length - 1);
+      const { availableSliders } = this.state;
+      const activeSliderIdx = random(0, availableSliders.length - 1);
       
-      this.setState((state) => {
-        return {
-          images: state.images
-            .map((img, idx) => idx === rand
-              ? { ...img, isFlip: !state.images[rand].isFlip }
-              : img
-            )
-        };
-      });
+      if (availableSliders[activeSliderIdx] === 'flip') {
+        this.flipSliderInst.current.flipRandomCard();
+      } else if (availableSliders[activeSliderIdx] === 'tape') {
+        this.tapeSliderInst.current.scrollSlide();
+      }
       
       this.timerId = setTimeout(tick.bind(this), this.state.timeout);
     }.bind(this), this.state.timeout);
@@ -44,38 +39,33 @@ class ImageWidget extends Component {
   
   render() {
     const {
-      row,
-      images
-    } = this.state;
-    
-    const {
-      flipSlider,
-      tapeSliderImages,
+      flipSliderImages,
+      tapeSliderInstImages,
       singleVerticalSlider,
       singleHorizontalSlider
     } = this.props;
-    console.info(tapeSliderImages);
+  
+    const { imageWidget } = styles;
     
     return (
-      <div
-        style={{
-          width: '100%',
-          overflow: 'hidden'
-        }}
-        className={ imageWidget }
-      >
-        <FlipCardWidget images={ images } />
-        {/*<TapeSliderWidget images={ tapeSliderImages }/>*/}
+      <div className={ imageWidget }>
+        <FlipCardWidget
+          ref={ this.flipSliderInst }
+          images={ flipSliderImages }
+        />
+        <TapeSliderWidget
+          ref={ this.tapeSliderInst }
+          images={ tapeSliderInstImages }
+          imagesInRow={ 7 }
+        />
       </div>
     );
   }
 }
 
-ImageWidget.propTypes = {};
-
 export default connect((state) => ({
   flipSliderImages: getTopRatedImages(state, 'flipSlider'),
-  tapeSliderImages: getTopRatedImages(state, 'classicSlider'),
+  tapeSliderInstImages: getTopRatedImages(state, 'classicSlider'),
   singleVerticalSliderImages: getTopRatedImages(state, 'singleVerticalSlider'),
   singleHorizontalSliderImages: getTopRatedImages(state, 'singleHorizontalSlider'),
 }))(ImageWidget);

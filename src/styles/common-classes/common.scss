@@ -14,8 +14,13 @@
   opacity: 1;
 }
 
-.image-for-widget {  // used to home-page image widget
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+// used to home-page image widget
+  .image-for-widget {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .widget-border {
+    border: 1px solid var(--widget-border);
+  }
