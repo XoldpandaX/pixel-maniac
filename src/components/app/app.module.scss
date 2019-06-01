@@ -1,5 +1,12 @@
+@import 'styles/functions/index.scss';
+
 .app {
   transition: all 0.15s;
+}
+
+.appContainer {
+  margin: 0 auto;
+  max-width: rem(1500px);
 }
 
 

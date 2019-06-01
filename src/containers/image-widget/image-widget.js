@@ -5,6 +5,7 @@ import { getTopRatedImages } from 'store/images/selectors';
 import random from 'lodash/random';
 
 import FlipCardWidget from 'containers/image-widget/childs/flip-card-widget';
+import TapeSliderWidget from 'containers/image-widget/childs/tape-slider-widget';
 
 import styles from './image-widget.module.scss';
 const { imageWidget } = styles;
@@ -18,16 +19,18 @@ class ImageWidget extends Component {
   };
   
   async componentDidMount() {
-    await this.setState({ images: this.props.flipSlider });
+    await this.setState({ images: this.props.flipSliderImages });
     
     this.timerId = setTimeout(function tick() {
       const rand = random(0, this.state.images.length - 1);
       
       this.setState((state) => {
         return {
-          images: state.images.map((img, idx) => {
-            return idx === rand ? { ...img, isFlip: !state.images[rand].isFlip } : img;
-          })
+          images: state.images
+            .map((img, idx) => idx === rand
+              ? { ...img, isFlip: !state.images[rand].isFlip }
+              : img
+            )
         };
       });
       
@@ -47,14 +50,22 @@ class ImageWidget extends Component {
     
     const {
       flipSlider,
-      classicSlider,
+      tapeSliderImages,
       singleVerticalSlider,
       singleHorizontalSlider
     } = this.props;
+    console.info(tapeSliderImages);
     
     return (
-      <div className={ imageWidget } style={{ width: '100%' }}>
+      <div
+        style={{
+          width: '100%',
+          overflow: 'hidden'
+        }}
+        className={ imageWidget }
+      >
         <FlipCardWidget images={ images } />
+        {/*<TapeSliderWidget images={ tapeSliderImages }/>*/}
       </div>
     );
   }
@@ -63,8 +74,8 @@ class ImageWidget extends Component {
 ImageWidget.propTypes = {};
 
 export default connect((state) => ({
-  flipSlider: getTopRatedImages(state, 'flipSlider'),
-  classicSlider: getTopRatedImages(state, 'classicSlider'),
-  singleVerticalSlider: getTopRatedImages(state, 'singleVerticalSlider'),
-  singleHorizontalSlider: getTopRatedImages(state, 'singleHorizontalSlider'),
+  flipSliderImages: getTopRatedImages(state, 'flipSlider'),
+  tapeSliderImages: getTopRatedImages(state, 'classicSlider'),
+  singleVerticalSliderImages: getTopRatedImages(state, 'singleVerticalSlider'),
+  singleHorizontalSliderImages: getTopRatedImages(state, 'singleHorizontalSlider'),
 }))(ImageWidget);

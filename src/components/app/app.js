@@ -12,46 +12,41 @@ import styles from './app.module.scss';
 class App extends Component {
   state = {
     isAppRender: false,
-    timeout: 1000
+    timeout: 1 // TODO return to 1000
   };
   
   async componentDidMount() {
     await this.props.dispatch(fetchHighestRatedImageCollection());
-    
-    setTimeout(() => {
-      this.setState({ isAppRender: true })
-    }, this.state.timeout);
+    this.setState({ isAppRender: true })
   }
   
   render () {
     const { isAppRender } = this.state;
-    const { app } = styles;
+    const { app, appContainer } = styles;
     
     const loader = !isAppRender && <GlobalLoader />;
   
     return (
-      <div className={app}>
+      <div className={ app }>
         { loader }
+        <header style={{height: '80px'}}>this is a header</header>
         <CSSTransition
-          classNames='a-slide'
+          // classNames='a-slide' // TODO uncomment to animate
           in={ isAppRender }
           timeout={{ enter: 400 }}
           unmountOnExit
         >
-          <main style={{padding: '50px 50px 2px'}}>
-            <div>
-              <header>this is a header</header>
-              <Switch>
-                <Route
-                  path='/'
-                  component={HomePage}
-                  exact
-                />
-              </Switch>
-              <footer>this is a footer</footer>
-            </div>
+          <main className={ appContainer }>
+            <Switch>
+              <Route
+                path='/'
+                component={HomePage}
+                exact
+              />
+            </Switch>
           </main>
         </CSSTransition>
+        <footer>this is a footer</footer>
       </div>
     );
   }
