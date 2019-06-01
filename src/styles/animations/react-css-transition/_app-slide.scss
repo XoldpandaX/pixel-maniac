@@ -1,0 +1,34 @@
+.app-slide-enter-active {
+  animation: app-slide-on .45s ease-in-out normal;
+  display: block;
+}
+
+.aapp-slide-enter-done {
+  transform: translateX(0px);
+}
+
+.app-slide-exit-active {
+  animation: app-slide-off .3s ease-out normal;
+}
+
+@keyframes app-slide-on {
+  0% {
+    opacity: 0;
+    transform: translateX(-140px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes app-slide-off {
+  0% {
+    transform: translateX(-140px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
