@@ -11,7 +11,7 @@ import styles from './image-widget.module.scss';
 class ImageWidget extends Component {
   state = {
     counter: 0,
-    timeout: 4000,
+    interval: 5000,
     availableSliders: ['flip', 'tape']
   };
   
@@ -19,18 +19,16 @@ class ImageWidget extends Component {
   flipSliderInst = React.createRef();
   
   async componentDidMount() {
-    this.timerId = setTimeout(function tick() {
+    this.timerId = setInterval(() => {
       const { availableSliders } = this.state;
       const activeSliderIdx = random(0, availableSliders.length - 1);
-      
+  
       if (availableSliders[activeSliderIdx] === 'flip') {
         this.flipSliderInst.current.flipRandomCard();
       } else if (availableSliders[activeSliderIdx] === 'tape') {
         this.tapeSliderInst.current.scrollSlide();
       }
-      
-      this.timerId = setTimeout(tick.bind(this), this.state.timeout);
-    }.bind(this), this.state.timeout);
+    }, this.state.interval);
   }
   
   componentWillUnmount() {

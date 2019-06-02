@@ -30,7 +30,7 @@ class App extends Component {
         { loader }
         <header style={{height: '80px'}}>this is a header</header>
         <CSSTransition
-          classNames='app-slide' // TODO uncomment to animate
+          classNames='app-slide'
           in={ isAppRender }
           timeout={{ enter: 400 }}
           unmountOnExit

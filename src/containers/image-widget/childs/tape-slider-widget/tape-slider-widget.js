@@ -53,7 +53,7 @@ class TapeSliderWidget extends Component {
       transform: `translate3d(${-currentPosition}px, 0px, 0px)`
     };
     
-    const imagesElements = (sliderImages) => sliderImages.map(({ id, urlThumb }) => (
+    const imagesElements = () => images.map(({ id, urlThumb }) => (
       <div
         key={ id }
         style={{ width: `${slideWidth}px` }}
@@ -75,7 +75,7 @@ class TapeSliderWidget extends Component {
           style={ dynamicStyles }
           className={ innerWrapper }
         >
-          { imagesElements(images) }
+          { imagesElements() }
         </div>
       </div>
     );
