@@ -11,12 +11,12 @@ let cx = classNames.bind(styles);
 class FlipCardWidget extends Component {
   state = {
     numOfLoadedImages: 0,
-    updatedImages: []
+    //updatedImages: []
   };
   
-  componentDidMount() {
-    this.setState({ updatedImages: this.props.images });
-  }
+  // componentDidMount() {
+  //   this.setState({ updatedImages: this.props.images });
+  // }
   
   updateNumOfLoadedImages = () => {
     this.setState((state) => ({
@@ -24,24 +24,23 @@ class FlipCardWidget extends Component {
     }));
   };
   
-  flipRandomCard() {
-    const rand = random(0, this.state.updatedImages.length - 1);
-    this.setState((state) => (
-      {
-        updatedImages: state.updatedImages
-          .map((img, idx) => idx === rand
-            ? { ...img, isFlip: !state.updatedImages[rand].isFlip }
-            : img
-          )
-      }
-    ));
-  }
+  // flipRandomCard() {
+  //   const rand = random(0, this.state.updatedImages.length - 1);
+  //   this.setState((state) => (
+  //     {
+  //       updatedImages: state.updatedImages
+  //         .map((img, idx) => idx === rand
+  //           ? { ...img, isFlip: !state.updatedImages[rand].isFlip }
+  //           : img
+  //         )
+  //     }
+  //   ));
+  // }
   
   render() {
-    const { numOfLoadedImages, updatedImages } = this.state;
+    const { numOfLoadedImages } = this.state;
     const { images } = this.props;
     const { flipCardWidget } = styles;
-    
     const cardElClasses = cx('widget-border', ['cardEl']);
     // 2 because of two sides of card with images
     const isAllImagesLoaded = numOfLoadedImages === images.length * 2;
@@ -52,7 +51,7 @@ class FlipCardWidget extends Component {
         className={ flipCardWidget }
       >
         {
-          updatedImages.map(({ id, front, back, isFlip, hasVerticalFlip }) => (
+          images.map(({ id, front, back, isFlip, hasVerticalFlip }) => (
             <div
               className={ cardElClasses }
               key={ id }

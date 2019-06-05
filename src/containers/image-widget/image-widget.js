@@ -11,20 +11,27 @@ import styles from './image-widget.module.scss';
 class ImageWidget extends Component {
   state = {
     counter: 0,
-    interval: 5000,
+    interval: 1000,
+    flipCardSlider: {
+      images: []
+    },
+    tapeCardSlider: {
+      images: []
+    },
     availableSliders: ['flip', 'tape']
   };
   
   tapeSliderInst = React.createRef();
-  flipSliderInst = React.createRef();
   
   async componentDidMount() {
+    this.initState();
+    
     this.timerId = setInterval(() => {
       const { availableSliders } = this.state;
       const activeSliderIdx = random(0, availableSliders.length - 1);
   
       if (availableSliders[activeSliderIdx] === 'flip') {
-        this.flipSliderInst.current.flipRandomCard();
+        this.flipRandomCard();
       } else if (availableSliders[activeSliderIdx] === 'tape') {
         this.tapeSliderInst.current.scrollSlide();
       }
@@ -35,27 +42,56 @@ class ImageWidget extends Component {
     clearTimeout(this.timerId);
   }
   
+  initState() {
+    const { flipSliderImages, tapeSliderImages } = this.props;
+    
+    this.setState({ flipCardSlider: { images: flipSliderImages } });
+    this.setState({ tapeCardSlider: { images: tapeSliderImages } });
+  }
+  
+  flipRandomCard() {
+    const rand = random(0, this.state.flipCardSlider.images.length - 1);
+    this.setState(({ flipCardSlider: { images } }) => (
+      {
+        flipCardSlider: {
+          images: images.map((img, idx) => idx === rand
+              ?  { ...img, isFlip: !images[rand].isFlip }
+              : img
+            )
+        }
+      }
+    ));
+  }
+  
   render() {
     const {
-      flipSliderImages,
-      tapeSliderInstImages,
+      tapeSliderImages,
       singleVerticalSlider,
       singleHorizontalSlider
     } = this.props;
+    
+    const {
+      flipCardSlider: { images: flipImages }
+    } = this.state;
   
     const { imageWidget } = styles;
     
     return (
       <div className={ imageWidget }>
-        <FlipCardWidget
-          ref={ this.flipSliderInst }
-          images={ flipSliderImages }
-        />
+        <FlipCardWidget images={ flipImages } />
         <TapeSliderWidget
           ref={ this.tapeSliderInst }
-          images={ tapeSliderInstImages }
+          images={ tapeSliderImages }
           imagesInRow={ 7 }
         />
+        {/*<TapeSliderWidget*/}
+        {/*  images={ tapeSliderImages }*/}
+        {/*  imagesInRow={ 6 }*/}
+        {/*/>*/}
+        {/*<TapeSliderWidget*/}
+        {/*  images={ tapeSliderImages }*/}
+        {/*  imagesInRow={ 10 }*/}
+        {/*/>*/}
       </div>
     );
   }
@@ -63,7 +99,7 @@ class ImageWidget extends Component {
 
 export default connect((state) => ({
   flipSliderImages: getTopRatedImages(state, 'flipSlider'),
-  tapeSliderInstImages: getTopRatedImages(state, 'classicSlider'),
+  tapeSliderImages: getTopRatedImages(state, 'classicSlider'),
   singleVerticalSliderImages: getTopRatedImages(state, 'singleVerticalSlider'),
   singleHorizontalSliderImages: getTopRatedImages(state, 'singleHorizontalSlider'),
 }))(ImageWidget);
