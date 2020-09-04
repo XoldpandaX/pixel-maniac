@@ -13,7 +13,7 @@
     "firebase": "^5.9.3",
     "izitoast": "^1.4.0",
     "lodash": "^4.17.11",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "npm": "^6.9.0",
     "prop-types": "^15.7.2",
